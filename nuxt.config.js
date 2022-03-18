@@ -1,5 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
+  target: 'server',
+
   head: {
     title: 'ammar-dokhan-frontend',
     htmlAttrs: {
@@ -12,7 +14,7 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: 'favicon/favicon.ico' }
     ]
   },
 
@@ -67,6 +69,11 @@ export default {
     },
     babel: {
       compact: true,
+    },
+    postcss: {
+      plugins: {
+        "postcss-custom-properties": false
+      },
     },
   }
 }

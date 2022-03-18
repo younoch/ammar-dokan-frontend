@@ -7,7 +7,7 @@
           <div class="relative flex items-center justify-between">
             <div class="flex items-center">
               <nuxt-link
-                :to="isSignin ? '/emplyee-list' : '/'"
+                to="/"
                 aria-label="Company"
                 title="Company"
                 class="inline-flex items-center mr-8"
@@ -34,12 +34,12 @@
               </nuxt-link>
               <ul class="flex items-center space-x-8 lg:flex">
                 <li>
-                  <a
-                    href="/"
+                  <nuxt-link
+                    to="/products"
                     aria-label="Our product"
                     title="Our product"
                     class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
-                    >Product</a
+                    >Product</nuxt-link
                   >
                 </li>
                 <li>
