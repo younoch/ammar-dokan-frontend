@@ -3,7 +3,7 @@
     <div class="flex items-center justify-center mt-4">
       <button
         @click="showModal = true"
-        class="px-4 py-2 font-semibold text-blue-100 bg-indigo-500 rounded-lg hover:bg-indigo-700 w-full"
+        class="w-full px-4 py-2 font-semibold text-blue-100 bg-indigo-500 rounded-lg  hover:bg-indigo-700"
         type="button"
       >
         Signup Modal
@@ -17,17 +17,10 @@
       x-transition:leave="transition ease-in duration-300"
       x-transition:leave-start="opacity-100 scale-100"
       x-transition:leave-end="opacity-0 scale-90"
-      class="
-        absolute
-        inset-0
-        flex
-        items-center
-        justify-center
-        bg-gray-700 bg-opacity-50
-      "
+      class="absolute inset-0 flex items-center justify-center bg-gray-700 bg-opacity-50 "
     >
-      <div
-        @click.passive="showModal = false"
+      <section
+        @click.="showModal = false"
         class="
           flex flex-col
           w-full
@@ -37,15 +30,14 @@
           rounded-md
           lg:m-0 lg:w-1/4
           sm:p-10
+          md:min-w-[330px]
         "
       >
         <div class="mb-8 text-center">
           <h1 class="my-3 text-4xl font-bold">Sign up</h1>
-          <p class="text-sm text-coolGray-600">
-            It's quick and easy.
-          </p>
+          <p class="text-sm text-coolGray-600">It's quick and easy.</p>
         </div>
-        <form @submit.prevent="submitSignup" class="">
+        <form @submit.prevent="submitSignup" action="/">
           <div class="space-y-4">
             <div>
               <label for="email" class="block mb-2 text-sm"
@@ -56,35 +48,16 @@
                 name="email"
                 placeholder="email"
                 v-model="signup.email"
-                class="
-                  w-full
-                  px-3
-                  py-2
-                  text-blue-800
-                  border border-blue-300
-                  rounded-md
-                  bg-blue-50
-                  focus:outline-none focus:ring-1 focus:ring-blue-300
-                "
+                class="w-full px-3 py-2 text-blue-800 border border-blue-300 rounded-md  bg-blue-50 focus:outline-none focus:ring-1 focus:ring-blue-300"
               />
             </div>
             <div>
-              
               <input
                 type="password"
                 name="password"
                 placeholder="password"
                 v-model="signup.password"
-                class="
-                  w-full
-                  px-3
-                  py-2
-                  text-blue-800
-                  border border-blue-300
-                  rounded-md
-                  bg-blue-50
-                  focus:outline-none focus:ring-1 focus:ring-blue-300
-                "
+                class="w-full px-3 py-2 text-blue-800 border border-blue-300 rounded-md  bg-blue-50 focus:outline-none focus:ring-1 focus:ring-blue-300"
               />
             </div>
           </div>
@@ -99,14 +72,7 @@
               <button
                 @click="showModal = false"
                 type="button"
-                class="
-                  w-full
-                  px-8
-                  py-3
-                  text-blue-600
-                  border border-blue-600
-                  rounded-md
-                "
+                class="w-full px-8 py-3 text-blue-600 border border-blue-600 rounded-md "
               >
                 Cancel
               </button>
@@ -122,7 +88,7 @@
             </p>
           </div>
         </form>
-      </div>
+      </section>
     </div>
   </div>
 </template>
@@ -135,25 +101,24 @@ export default {
       signup: {
         email: "",
         password: "",
-        signinId: 34
       },
     };
   },
   methods: {
     async submitSignup() {
-      this.$axios
-        .post(process.env.PROJECT_API + "/user/signup", this.signup)
-        .then((res) => {
-          console.log(res);
-          alert(`You are joined succecfully`)
-        })
-        .catch((error) => {
-          // error.response.status Check status code
-          console.log(error.response);
-        })
-        .finally(() => {
-          //Perform action in always
+      try {
+        let res = await this.$axios({
+          method: "post",
+          url: process.env.PROJECT_API + "/user/signup",
+          data: this.signup,
         });
+        let data = res.data;
+        alert(data.message)
+        return data;
+      } catch (error) {
+        alert(error.response.data.message)
+        return error.response;
+      }
     },
   },
 };

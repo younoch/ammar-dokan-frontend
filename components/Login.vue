@@ -64,22 +64,23 @@
               </div>
             </div> -->
 
-            <form @submit.prevent="submitSignup" class="max-w-xs mx-auto">
+            <form @submit.prevent="submitLogin" class="max-w-xs mx-auto">
               <input
                 class="w-full px-8 py-4 text-sm font-medium placeholder-gray-500 bg-gray-100 border border-gray-200 rounded-lg focus:outline-none focus:border-gray-400 focus:bg-white"
                 type="email"
                 placeholder="Email"
-                v-model="signin.email"
+                v-model="login.email"
               />
               <input
                 class="w-full px-8 py-4 mt-5 text-sm font-medium placeholder-gray-500 bg-gray-100 border border-gray-200 rounded-lg focus:outline-none focus:border-gray-400 focus:bg-white"
                 type="password"
                 placeholder="Password"
-                v-model="signin.password"
+                v-model="login.password"
               />
               <div class="flex justify-between mb-2">
-                
-                <a href="#" class="text-xs test-right text-blue-600 hover:underline"
+                <a
+                  href="#"
+                  class="text-xs text-blue-600 test-right hover:underline"
                   >Forgot password?</a
                 >
               </div>
@@ -106,7 +107,6 @@
               </p>
               <SignUp />
             </form>
-            
           </div>
         </div>
       </div>
@@ -136,47 +136,38 @@ export default {
 
   created() {},
 
-
-
   data() {
     return {
-      signinEmail: "",
-      signPassword: null,
-      signin: {
-        email: '',
-        password: ''
-      }
+      login: {
+        email: "",
+        password: "",
+      },
     };
   },
-   /*  watch: {
-      signup(value) 
-      
-  }, */
   props: ["user"],
   computed: {
     // a computed getter
-    showSignIn() {
-      // `this` points to the component instance
-      return this.$store.state.showSignin;
-    },
   },
   methods: {
-    setSignIn() {
-      this.$store.commit("showSignin");
-    },
-    setSignStatus() {
-      this.getSigninId();
-      this.$store.dispatch("setSigninState");
-    },
 
-/*     getSigninId() {
-      const signinUser = this.user.find((el) => el.email === this.signinEmail);
-      const signinId = signinUser.id;
-      console.log("signinUser id:", signinId);
-      if (!!signinId) {
-        this.$router.push({ path: `/emplyee-list/${signinId}` });
+    async submitLogin() {
+      try {
+        let res = await this.$axios({
+          method: "post",
+          url: process.env.PROJECT_API + "/user/login",
+          data: this.login,
+        });
+        let data  = res.data;
+        this.$store.commit("CURRENT_TOKEN", {value: data.token} );
+        // this.$store.state.currentToken = data.token;
+        this.$router.push('/products')
+        return data;
+      } catch (error) {
+        alert(error.response.data.message);
+
+        return error.response;
       }
-    }, */
+    },
   },
 };
 </script>
