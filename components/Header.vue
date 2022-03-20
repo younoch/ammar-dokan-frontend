@@ -1,8 +1,8 @@
 <template>
     <header class="w-full">
-      <div class="bg-gray-900">
+      <div class="bg-indigo-900">
         <div
-          class="px-4 py-2 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8"
+          class="px-1 py-2 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8"
         >
           <div class="relative flex items-center justify-between">
             <div class="flex items-center">
@@ -12,61 +12,37 @@
                 title="Company"
                 class="inline-flex items-center mr-8"
               >
-                <svg
-                  class="w-8 text-teal-accent-400"
-                  viewBox="0 0 24 24"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-miterlimit="10"
-                  stroke="currentColor"
-                  fill="none"
-                >
-                  <rect x="3" y="1" width="7" height="12"></rect>
-                  <rect x="3" y="17" width="7" height="6"></rect>
-                  <rect x="14" y="1" width="7" height="6"></rect>
-                  <rect x="14" y="11" width="7" height="12"></rect>
-                </svg>
                 <span
-                  class="ml-2 text-xl font-bold tracking-wide text-gray-100 uppercase "
-                  >Company</span
+                  class="ml-2 text-center text-xl font-bold tracking-wide text-gray-100 uppercase "
+                  >Amar <br> Dhokan</span
                 >
               </nuxt-link>
-              <ul class="flex items-center space-x-8 lg:flex">
+              <ul class="flex items-center text-xl space-x-8 lg:flex">
                 <li>
                   <nuxt-link
                     to="/products"
                     aria-label="Our product"
                     title="Our product"
                     class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
-                    >Product</nuxt-link
+                    >Products</nuxt-link
                   >
                 </li>
                 <li>
-                  <a
-                    href="/"
+                  <nuxt-link
+                    to="/orders"
                     aria-label="Our product"
                     title="Our product"
                     class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
-                    >Features</a
+                    >Orders</nuxt-link
                   >
                 </li>
                 <li>
-                  <a
-                    href="/"
-                    aria-label="Product pricing"
-                    title="Product pricing"
-                    class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
-                    >Pricing</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="/"
+                  <nuxt-link
+                    to="/about-us"
                     aria-label="About us"
                     title="About us"
                     class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
-                    >About us</a
+                    >About us</nuxt-link
                   >
                 </li>
               </ul>
@@ -198,15 +174,6 @@
                           title="Our product"
                           class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                           >Features</a
-                        >
-                      </li>
-                      <li>
-                        <a
-                          href="/"
-                          aria-label="Product pricing"
-                          title="Product pricing"
-                          class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                          >Pricing</a
                         >
                       </li>
                       <li>
