@@ -2,7 +2,7 @@
     <header class="w-full">
       <div class="bg-indigo-900">
         <div
-          class="px-1 py-2 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8"
+          class="py-2 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl"
         >
           <div class="relative flex items-center justify-between">
             <div class="flex items-center">
