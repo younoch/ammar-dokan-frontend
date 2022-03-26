@@ -1,7 +1,16 @@
 <template>
   <div class="flex items-center justify-center">
     <div
-      class="flex justify-center flex-1 max-w-screen-xl m-0 bg-white shadow sm:rounded-lg"
+      class="
+        flex
+        justify-center
+        flex-1
+        max-w-screen-xl
+        m-0
+        bg-white
+        shadow
+        sm:rounded-lg
+      "
     >
       <div class="p-6 lg:w-1/2 xl:w-5/12 sm:p-12">
         <div class="flex flex-col items-center mt-8">
@@ -10,9 +19,27 @@
             <span class="text-3xl font-extrabold">Amar Dhokan</span>
           </h1>
           <div class="flex-1 w-full mt-8">
-            <!-- <div class="flex flex-col items-center">
+<!--             <div class="flex flex-col items-center">
               <button
-                class="flex items-center justify-center w-full max-w-xs py-3 font-bold text-gray-800 transition-all duration-300 ease-in-out bg-indigo-100 rounded-lg shadow-sm focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline"
+                class="
+                  flex
+                  items-center
+                  justify-center
+                  w-full
+                  max-w-xs
+                  py-3
+                  font-bold
+                  text-gray-800
+                  transition-all
+                  duration-300
+                  ease-in-out
+                  bg-indigo-100
+                  rounded-lg
+                  shadow-sm
+                  focus:outline-none
+                  hover:shadow
+                  focus:shadow-sm focus:shadow-outline
+                "
               >
                 <div class="p-2 bg-white rounded-full">
                   <svg class="w-4" viewBox="0 0 533.5 544.3">
@@ -34,13 +61,30 @@
                     />
                   </svg>
                 </div>
-                <span class="ml-4">
-                  Sign Up with Google
-                </span>
+                <span class="ml-4"> Sign Up with Google </span>
               </button>
 
               <button
-                class="flex items-center justify-center w-full max-w-xs py-3 mt-5 font-bold text-gray-800 transition-all duration-300 ease-in-out bg-indigo-100 rounded-lg shadow-sm focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline"
+                class="
+                  flex
+                  items-center
+                  justify-center
+                  w-full
+                  max-w-xs
+                  py-3
+                  mt-5
+                  font-bold
+                  text-gray-800
+                  transition-all
+                  duration-300
+                  ease-in-out
+                  bg-indigo-100
+                  rounded-lg
+                  shadow-sm
+                  focus:outline-none
+                  hover:shadow
+                  focus:shadow-sm focus:shadow-outline
+                "
               >
                 <div class="p-1 bg-white rounded-full">
                   <svg class="w-6" viewBox="0 0 32 32">
@@ -50,29 +94,60 @@
                     />
                   </svg>
                 </div>
-                <span class="ml-4">
-                  Sign Up with GitHub
-                </span>
+                <span class="ml-4"> Sign Up with GitHub </span>
               </button>
             </div> -->
-
-            <!--             <div class="my-12 text-center border-b">
+            <div class="my-12 text-center border-b">
               <div
-                class="inline-block px-2 text-sm font-medium leading-none tracking-wide text-gray-600 transform translate-y-1/2 bg-white"
+                class="
+                  inline-block
+                  px-2
+                  text-sm
+                  font-medium
+                  leading-none
+                  tracking-wide
+                  text-gray-600
+                  transform
+                  translate-y-1/2
+                  bg-white
+                "
               >
                 Or sign up with e-mail
               </div>
-            </div> -->
+            </div>
 
             <form @submit.prevent="submitLogin" class="max-w-xs mx-auto">
               <input
-                class="w-full px-8 py-4 text-sm font-medium placeholder-gray-500 bg-gray-100 border border-gray-200 rounded-lg focus:outline-none focus:border-gray-400 focus:bg-white"
+                class="
+                  w-full
+                  px-8
+                  py-4
+                  text-sm
+                  font-medium
+                  placeholder-gray-500
+                  bg-gray-100
+                  border border-gray-200
+                  rounded-lg
+                  focus:outline-none focus:border-gray-400 focus:bg-white
+                "
                 type="email"
                 placeholder="Email"
                 v-model="login.email"
               />
               <input
-                class="w-full px-8 py-4 mt-5 text-sm font-medium placeholder-gray-500 bg-gray-100 border border-gray-200 rounded-lg focus:outline-none focus:border-gray-400 focus:bg-white"
+                class="
+                  w-full
+                  px-8
+                  py-4
+                  mt-5
+                  text-sm
+                  font-medium
+                  placeholder-gray-500
+                  bg-gray-100
+                  border border-gray-200
+                  rounded-lg
+                  focus:outline-none focus:border-gray-400 focus:bg-white
+                "
                 type="password"
                 placeholder="Password"
                 v-model="login.password"
@@ -86,7 +161,24 @@
               </div>
               <button
                 type="submit"
-                class="flex items-center justify-center w-full py-4 mt-5 font-semibold tracking-wide text-gray-100 transition-all duration-300 ease-in-out bg-indigo-500 rounded-lg hover:bg-indigo-700 focus:shadow-outline focus:outline-none"
+                class="
+                  flex
+                  items-center
+                  justify-center
+                  w-full
+                  py-4
+                  mt-5
+                  font-semibold
+                  tracking-wide
+                  text-gray-100
+                  transition-all
+                  duration-300
+                  ease-in-out
+                  bg-indigo-500
+                  rounded-lg
+                  hover:bg-indigo-700
+                  focus:shadow-outline focus:outline-none
+                "
               >
                 <svg
                   class="w-6 h-6 -ml-2"
@@ -105,6 +197,7 @@
               <p class="mt-6 text-lg text-center text-gray-600">
                 Don't have an account yet? click
               </p>
+
               <SignUp />
             </form>
           </div>
@@ -144,12 +237,10 @@ export default {
       },
     };
   },
-  props: ["user"],
   computed: {
     // a computed getter
   },
   methods: {
-
     async submitLogin() {
       try {
         let res = await this.$axios({
@@ -157,10 +248,10 @@ export default {
           url: process.env.PROJECT_API + "/user/login",
           data: this.login,
         });
-        let data  = res.data;
-        this.$store.commit("CURRENT_TOKEN", {value: data.token} );
-        // this.$store.state.currentToken = data.token;
-        this.$router.push('/products')
+        let data = res.data;
+        this.$store.dispatch("CURRENT_TOKEN", data.token);
+        this.$store.dispatch("SET_LOGOUT_TIMER", 5 * 60 * 1000);
+        this.$router.push("/products");
         return data;
       } catch (error) {
         alert(error.response.data.message);

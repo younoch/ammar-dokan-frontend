@@ -35,7 +35,7 @@
         bg-gray-700 bg-opacity-50
       "
     >
-      <section
+      <div
         @click.="showModal = false"
         class="
           flex flex-col
@@ -53,8 +53,8 @@
           <h1 class="my-3 text-4xl font-bold">Sign up</h1>
           <p class="text-sm text-coolGray-600">It's quick and easy.</p>
         </div>
-        <form @submit.prevent="submitSignup" action="/">
-          <div class="space-y-4">
+        <!-- <form @submit.prevent="submitSignup"> -->
+           <div class="space-y-4">
             <div>
               <label for="email" class="block mb-2 text-sm"
                 >Email address</label
@@ -94,8 +94,8 @@
                 "
               />
             </div>
-          </div>
-          <div class="mt-6 space-y-2">
+          </div> 
+         <div class="mt-6 space-y-2">
             <div class="flex gap-x-2">
               <button
                 type="submit"
@@ -128,8 +128,8 @@
               >.
             </p>
           </div>
-        </form>
-      </section>
+        <!-- </form> -->
+      </div>
     </div>
   </div>
 </template>

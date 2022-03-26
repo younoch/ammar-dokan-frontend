@@ -27,7 +27,21 @@
     </div>
 
     <div class="flex justify-between flex-grow py-2 place-items-end">
-      <button><fa class="mr-2" :icon="['fa', 'square-pen']" /> Edit</button>
+      <button
+        class="px-4 py-1 text-lg font-medium text-indigo-600 bg-white rounded-lg ca hover:bg-indigo-50"
+        @click="showEditModal = true"
+      >
+        <fa class="mr-2" :icon="['fa', 'square-pen']" /> Edit
+      </button>
+      <action-modal
+        v-if="showEditModal"
+        type="info"
+        title="Update product"
+        width="sm"
+        @close="showEditModal = false"
+      >
+        <ProductUpdate :product ="productDetails"  />
+      </action-modal>
       <div>
         <button @click="showDeleteModal = true">
           <fa class="mr-2" :icon="['fa', 'trash']" /> Delete
@@ -39,7 +53,7 @@
       type="danger"
       title="Confirm Action"
       width="sm"
-      v-on:close="showDeleteModal = false"
+      @close="showDeleteModal = false"
     >
       <p class="text-gray-800">
         Are you sure you want you delete this product? This action cannot be
@@ -69,6 +83,8 @@ export default {
   data() {
     return {
       showDeleteModal: false,
+      showEditModal: false
+      
     };
   },
 
@@ -91,7 +107,7 @@ export default {
         let data = res.data;
         this.showDeleteModal = false;
         alert(data.message);
-        this.$router.push('/products');
+        this.$router.push("/products");
       } catch (error) {
         alert(error.response.data.message);
         this.showDeleteModal = false;
