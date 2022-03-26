@@ -48,6 +48,8 @@
 
 <script>
 export default {
+    name: "products",
+    middleware: ['check-auth','auth'],
   data() {
     return {
       productDetails: "",

@@ -1,23 +1,12 @@
 <template>
   <div>
-    <Login :user="gettersusers" />
-    
+    <Login />
   </div>
 </template>
 
 <script>
 export default {
   name: "LogResistraion",
-  computed: {
-    gettersusers() {
-      return this.$store.getters.allUsers;
-    },
-    users() {
-      return this.$store.state.users;
-    },
-  },
-  mounted() {
-    this.$store.dispatch("getUsers");
-  },
+  middleware: "check-auth",
 };
 </script>
