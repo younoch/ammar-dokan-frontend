@@ -170,6 +170,7 @@ export default {
   data() {
     return {
       imageUrl: "",
+      showUpadteModal: false,
       CreateProduct: {
         name: "",
         price: null,
@@ -207,8 +208,11 @@ export default {
       Object.keys(this.CreateProduct).forEach((key) => {
         formData.append(key, this.product[key]);
       });
+      const token = localStorage.getItem('token');
+      console.log({token});
       try {
         let res = await this.$axios({
+          
           method: "patch",
           url: process.env.PROJECT_API + "/products/" + this.product._id,
           data: [
@@ -216,10 +220,12 @@ export default {
             { propName: "price", value: this.product.price },
           ],
           headers: {
-            Authorization: `Bearer ${this.$store.state.currentToken}`,
+            Authorization: `Bearer ${ this.$store.state.currentToken}`,
           },
         });
-        return res;
+        alert(res.data.message);
+        this.$router.push("/products");
+        
       } catch (error) {
         alert(error.response.data.message);
 

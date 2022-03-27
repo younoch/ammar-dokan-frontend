@@ -73,18 +73,9 @@
               class="flex items-center space-x-8 cursor-default lg:flex"
             >
               <li
-                v-if="!showSignin"
-                @click="setSignIn"
                 class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
               >
-                Sign in
-              </li>
-              <li
-                v-else
-                @click="setSignIn"
-                class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-              >
-                Sign up
+                Logout
               </li>
             </ul>
             <div class="lg:hidden">

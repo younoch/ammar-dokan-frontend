@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Cookie from 'js-cookie'
 
 export const state = () => ({
   currentToken: null
@@ -6,7 +7,9 @@ export const state = () => ({
 
 export const getters = {
   isAuthenticated(state) {
-    return state.currentToken != null;
+    if (process.client) {
+      return state.currentToken != null;
+    }
   }
 }
 
@@ -16,12 +19,14 @@ export const mutations = {
     state.currentToken = value;
     localStorage.setItem('token', value);
     localStorage.setItem('tokenExpireTime', new Date().getTime() + 5 * 60 * 1000);
+
+    Cookie.set('tokenCookie', value);
+    Cookie.set('tokenCookieExpiretion', new Date().getTime() + 5 * 60 * 1000);
   },
   CLEAR_TOKEN(state) {
     state.currentToken = null;
     this.$router.push("/")
   },
-
 };
 
 export const actions = {
@@ -34,16 +39,21 @@ export const actions = {
       context.commit('CLEAR_TOKEN');
     }, duration)
   },
-  INIT_AUTH(context) {
-    const token = localStorage.getItem('token');
-    const tokenExpireTime = localStorage.getItem('tokenExpireTime');
-    const newDate = new Date().getTime()
-    console.log("diifrence = ", tokenExpireTime - newDate )
-    if (newDate > tokenExpireTime || !token) {
-      return;
+  INIT_AUTH(context, isServer) {
+    if (isServer) {
+      
     } else {
-      context.commit('CURRENT_TOKEN', token)
+      const token = localStorage.getItem('token');
+      const tokenExpireTime = localStorage.getItem('tokenExpireTime');
+      const newDate = new Date().getTime()
+      console.log("diifrence = ", tokenExpireTime - newDate)
+      if (newDate > tokenExpireTime && !token) {
+        return;
+      }
     }
+    context.commit('CURRENT_TOKEN', token);
+    context.dispatch("SET_LOGOUT_TIMER", tokenExpireTime - new Date().getTime())
+    console.log('my token', token)
   }
 };
 

@@ -155,7 +155,9 @@ export default {
             Authorization: `Bearer ${this.$store.state.currentToken}`,
           },
         });
-        return res;
+        // tempAlert(res.data.message,1000);
+        alert(res.data.message);
+        this.$router.push("/products");
       } catch (error) {
         alert(error.response.data.message);
 
