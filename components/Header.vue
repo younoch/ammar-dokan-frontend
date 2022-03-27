@@ -48,7 +48,7 @@
               </ul>
             </div>
             <ul
-              v-if="isSignin"
+
               class="flex items-center space-x-8 cursor-default lg:flex"
             >
               <li>
@@ -60,22 +60,12 @@
                   />
                 </div>
               </li>
-              <li @click="setSignStatus">
+              <li @click="onLogout">
                 <nuxt-link
                   class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
                   to="/"
                   >Sign out</nuxt-link
                 >
-              </li>
-            </ul>
-            <ul
-              v-else
-              class="flex items-center space-x-8 cursor-default lg:flex"
-            >
-              <li
-                class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-              >
-                Logout
               </li>
             </ul>
             <div class="lg:hidden">
@@ -226,11 +216,8 @@ export default {
     },
   },
   methods: {
-    setSignIn() {
-      this.$store.commit("showSignin");
-    },
-    setSignStatus() {
-      this.$store.dispatch("setSigninState");
+    onLogout() {
+      this.$store.dispatch("LOGOUT");
     },
   },
 };

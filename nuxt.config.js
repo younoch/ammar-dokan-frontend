@@ -3,7 +3,7 @@ export default {
   target: 'server',
 
   head: {
-    title: 'ammar-dokhan-frontend',
+    title: 'Ammar-Dokan',
     htmlAttrs: {
       lang: 'en'
     },
