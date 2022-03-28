@@ -51,13 +51,13 @@
                 <span class="ml-4"> Sign Up with GitHub </span>
               </button>
             </div> -->
-            <div class="my-12 text-center border-b">
+<!--             <div class="my-12 text-center border-b">
               <div
                 class="inline-block px-2 text-sm font-medium leading-none tracking-wide text-gray-600 transform translate-y-1/2 bg-white "
               >
                 Or sign up with e-mail
               </div>
-            </div>
+            </div> -->
 
             <form @submit.prevent="submitLogin" class="max-w-xs mx-auto">
               <input
@@ -95,7 +95,7 @@
                   <circle cx="8.5" cy="7" r="4" />
                   <path d="M20 8v6M23 11h-6" />
                 </svg>
-                <span class="ml-3"> Log in </span>
+                <span class="ml-3"> Sign In </span>
               </button>
               <p class="mt-6 text-lg text-center text-gray-600">
                 Don't have an account yet? click

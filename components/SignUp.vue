@@ -53,7 +53,7 @@
           <h1 class="my-3 text-4xl font-bold">Sign up</h1>
           <p class="text-sm text-coolGray-600">It's quick and easy.</p>
         </div>
-        <!-- <form @submit.prevent="submitSignup"> -->
+        <form @submit.prevent="submitSignup">
            <div class="space-y-4">
             <div>
               <label for="email" class="block mb-2 text-sm"
@@ -128,7 +128,7 @@
               >.
             </p>
           </div>
-        <!-- </form> -->
+        </form>
       </div>
     </div>
   </div>
@@ -147,6 +147,7 @@ export default {
   },
   methods: {
     async submitSignup() {
+      console.log(this.signup.email);
       try {
         let res = await this.$axios({
           method: "post",

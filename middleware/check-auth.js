@@ -1,4 +1,5 @@
 export default function (context) {
-    if( process.client)
-    context.store.dispatch("INIT_AUTH");
+  if (process.browser) {
+    context.store.dispatch("INIT_AUTH", context.req);
   }
+} 
