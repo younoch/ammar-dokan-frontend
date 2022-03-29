@@ -53,6 +53,7 @@
           <h1 class="my-3 text-4xl font-bold">Sign up</h1>
           <p class="text-sm text-coolGray-600">It's quick and easy.</p>
         </div>
+        <client-only>
         <form @submit.prevent="submitSignup">
            <div class="space-y-4">
             <div>
@@ -129,6 +130,7 @@
             </p>
           </div>
         </form>
+        </client-only>
       </div>
     </div>
   </div>
