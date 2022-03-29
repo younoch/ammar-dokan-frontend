@@ -126,9 +126,6 @@ export default {
       counter,
     };
   },
-  async asyncData(context) {
-    const query_params = context.route.query;
-  },
 
   created() {},
 
@@ -145,6 +142,7 @@ export default {
   },
   methods: {
     async submitLogin() {
+      console.log("process.env", process.env.PROJECT_API);
       try {
         let res = await this.$axios({
           method: "post",
