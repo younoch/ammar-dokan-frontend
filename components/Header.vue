@@ -90,7 +90,7 @@
                   ></path>
                 </svg>
               </button>
-              <div v-if="isMenuOpen" class="absolute top-0 left-0 w-full">
+              <div v-show="isMenuOpen" class="absolute top-0 left-0 w-full">
                 <div class="p-5 bg-white border rounded shadow-sm">
                   <div class="flex items-center justify-between mb-4">
                     <div>
@@ -166,7 +166,7 @@
                           >About us</a
                         >
                       </li>
-                      <li v-if="showSignIn">
+                      <li >
                         <a
                           href="/"
                           aria-label="Sign in"
@@ -175,7 +175,7 @@
                           >Sign in
                         </a>
                       </li>
-                      <li v-else>
+                      <li>
                         <a
                           href="/"
                           class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
@@ -207,9 +207,6 @@ export default {
 //     console.log(process.env.PROJECT_API)
 // },
   computed: {
-    showSignin() {
-      return this.$store.state.showSignin;
-    },
     isSignin() {
       const isSignin = this.$store.state.isSignin;
       return isSignin;

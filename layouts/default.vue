@@ -23,18 +23,12 @@ export default {
 //     console.log(process.env.PROJECT_API)
 // },
   computed: {
-    showSignin() {
-      return this.$store.state.showSignin;
-    },
     isSignin() {
       const isSignin = this.$store.state.isSignin;
       return isSignin;
     },
   },
   methods: {
-    setSignIn() {
-      this.$store.commit("showSignin");
-    },
     setSignStatus() {
       this.$store.dispatch("setSigninState");
     },
