@@ -99,7 +99,7 @@ export default {
       try {
         let res = await this.$axios({
           method: "delete",
-          url: process.env.PROJECT_API + "/products/" + this.productDetails._id,
+          url:"/products/" + this.productDetails._id,
           headers: {
             Authorization: `Bearer ${this.$store.state.currentToken}`,
           },

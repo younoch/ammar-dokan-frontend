@@ -41,7 +41,6 @@ export const actions = {
   },
   INIT_AUTH(context, req) {
     let token, tokenExpireTime;
-    console.log({ req });
     if (req) {
       if (!req.headers.cookie) {
         return;
@@ -50,7 +49,6 @@ export const actions = {
       if (!jwtCookie) {
         return;
       }
-      console.log({ jwtCookie })
       token = jwtCookie.split('=')[1];
       tokenExpireTime = req.headers.cookie.split(';').find(c => c.trim().startsWith('tokenCookieExpiretion=')).split("=")[1];
 

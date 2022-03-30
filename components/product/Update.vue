@@ -17,16 +17,7 @@
                   name="product_name"
                   id="product_name"
                   v-model="product.name"
-                  class="
-                    flex-1
-                    block
-                    w-full
-                    border-gray-300
-                    rounded-none
-                    focus:ring-indigo-500 focus:border-indigo-500
-                    rounded-r-md
-                    sm:text-sm
-                  "
+                  class="flex-1 block w-full border-gray-300 rounded-none  focus:ring-indigo-500 focus:border-indigo-500 rounded-r-md sm:text-sm"
                   placeholder="Eg: Mango"
                 />
               </div>
@@ -44,16 +35,7 @@
                   name="product_price"
                   id="product_price"
                   v-model="product.price"
-                  class="
-                    flex-1
-                    block
-                    w-full
-                    border-gray-300
-                    rounded-none
-                    focus:ring-indigo-500 focus:border-indigo-500
-                    rounded-r-md
-                    sm:text-sm
-                  "
+                  class="flex-1 block w-full border-gray-300 rounded-none  focus:ring-indigo-500 focus:border-indigo-500 rounded-r-md sm:text-sm"
                   placeholder="Eg: Mango"
                 />
               </div>
@@ -65,16 +47,7 @@
               Cover photo
             </label>
             <label
-              class="
-                flex
-                justify-center
-                px-6
-                pt-5
-                pb-6
-                mt-1
-                border-2 border-gray-300 border-dashed
-                rounded-md
-              "
+              class="flex justify-center px-6 pt-5 pb-6 mt-1 border-2 border-gray-300 border-dashed rounded-md "
               for="file-upload"
             >
               <div class="space-y-1 text-center">
@@ -94,19 +67,7 @@
                 </svg>
                 <div class="flex justify-center text-sm text-gray-600">
                   <label
-                    class="
-                      relative
-                      font-medium
-                      text-indigo-600
-                      bg-white
-                      rounded-md
-                      cursor-pointer
-                      hover:text-indigo-500
-                      focus-within:outline-none
-                      focus-within:ring-2
-                      focus-within:ring-offset-2
-                      focus-within:ring-indigo-500
-                    "
+                    class="relative font-medium text-indigo-600 bg-white rounded-md cursor-pointer  hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
                     @click="uoloadImage"
                   >
                     <p class="text-center">Upload a file</p>
@@ -131,24 +92,7 @@
         <div class="px-4 py-3 text-right bg-gray-50 sm:px-6">
           <button
             type="submit"
-            class="
-              inline-flex
-              justify-center
-              px-4
-              py-2
-              text-sm
-              font-medium
-              text-white
-              bg-indigo-600
-              border border-transparent
-              rounded-md
-              shadow-sm
-              hover:bg-indigo-700
-              focus:outline-none
-              focus:ring-2
-              focus:ring-offset-2
-              focus:ring-indigo-500
-            "
+            class="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm  hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
             Update
           </button>
@@ -209,12 +153,11 @@ export default {
         formData.append(key, this.product[key]);
       });
       const token = localStorage.getItem('token');
-      console.log({token});
       try {
         let res = await this.$axios({
           
           method: "patch",
-          url: process.env.PROJECT_API + "/products/" + this.product._id,
+          url: "/products/" + this.product._id,
           data: [
             { propName: "name", value: this.product.name },
             { propName: "price", value: this.product.price },

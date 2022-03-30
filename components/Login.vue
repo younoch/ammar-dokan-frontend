@@ -120,16 +120,6 @@
 
 <script>
 export default {
-  setup() {
-    const counter = 5;
-    return {
-      counter,
-    };
-  },
-
-  created() {
-    console.log("process.env", process.env.PROJECT_API)
-  },
 
   data() {
     return {
@@ -144,7 +134,6 @@ export default {
   },
   methods: {
     async submitLogin() {
-      console.log("process.env", process.env.PROJECT_API);
       try {
         let res = await this.$axios({
           method: "post",
@@ -152,7 +141,6 @@ export default {
           data: this.login,
         });
         let data = res.data;
-        // console.log('object', data.token);
         this.$store.commit("CURRENT_TOKEN",   data.token);
         this.$store.dispatch("SET_LOGOUT_TIMER", 5 * 60 * 1000);
         this.$router.push("/products");
