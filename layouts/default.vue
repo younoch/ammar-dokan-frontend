@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col w-full lg:min-h-screen scroll-smooth">
     <Header />
-    <main class="flex-grow w-full flex flex-col mx-auto">
+    <main class="flex flex-col flex-grow w-full mx-auto">
       <nuxt class="flex-grow" />
     </main>
     <footer
@@ -18,20 +18,6 @@ export default {
     return {
       isMenuOpen: false,
     };
-  },
-//   mounted() {
-//     console.log(process.env.PROJECT_API)
-// },
-  computed: {
-    isSignin() {
-      const isSignin = this.$store.state.isSignin;
-      return isSignin;
-    },
-  },
-  methods: {
-    setSignStatus() {
-      this.$store.dispatch("setSigninState");
-    },
   },
 };
 </script>

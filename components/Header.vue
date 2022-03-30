@@ -203,9 +203,6 @@ export default {
       isMenuOpen: false,
     };
   },
-//   mounted() {
-//     console.log(process.env.PROJECT_API)
-// },
   computed: {
     isSignin() {
       const isSignin = this.$store.state.isSignin;

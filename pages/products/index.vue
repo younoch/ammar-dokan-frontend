@@ -60,7 +60,7 @@ export default {
     const products = await context.app
       .$axios({
         method: "get",
-        url: process.env.PROJECT_API + "/products",
+        url:"/products",
         headers: {
           Authorization: `Bearer ${context.store.state.currentToken}`,
         },

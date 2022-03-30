@@ -120,17 +120,6 @@
 
 <script>
 export default {
-  setup() {
-    const counter = 5;
-    return {
-      counter,
-    };
-  },
-  async asyncData(context) {
-    const query_params = context.route.query;
-  },
-
-  created() {},
 
   data() {
     return {
@@ -148,11 +137,10 @@ export default {
       try {
         let res = await this.$axios({
           method: "post",
-          url: process.env.PROJECT_API + "/user/login",
+          url: "/user/login",
           data: this.login,
         });
         let data = res.data;
-        // console.log('object', data.token);
         this.$store.commit("CURRENT_TOKEN",   data.token);
         this.$store.dispatch("SET_LOGOUT_TIMER", 5 * 60 * 1000);
         this.$router.push("/products");

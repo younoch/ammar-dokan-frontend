@@ -3,16 +3,7 @@
     <div class="flex items-center justify-center mt-4">
       <button
         @click="showModal = true"
-        class="
-          w-full
-          px-4
-          py-2
-          font-semibold
-          text-blue-100
-          bg-indigo-500
-          rounded-lg
-          hover:bg-indigo-700
-        "
+        class="w-full px-4 py-2 font-semibold text-blue-100 bg-indigo-500 rounded-lg hover:bg-indigo-700"
         type="button"
       >
         Signup Modal
@@ -26,14 +17,7 @@
       x-transition:leave="transition ease-in duration-300"
       x-transition:leave-start="opacity-100 scale-100"
       x-transition:leave-end="opacity-0 scale-90"
-      class="
-        absolute
-        inset-0
-        flex
-        items-center
-        justify-center
-        bg-gray-700 bg-opacity-50
-      "
+      class="absolute inset-0 flex items-center justify-center bg-gray-700 bg-opacity-50 "
     >
       <div
         @click.="showModal = false"
@@ -65,16 +49,7 @@
                 name="email"
                 placeholder="email"
                 v-model="signup.email"
-                class="
-                  w-full
-                  px-3
-                  py-2
-                  text-blue-800
-                  border border-blue-300
-                  rounded-md
-                  bg-blue-50
-                  focus:outline-none focus:ring-1 focus:ring-blue-300
-                "
+                class="w-full px-3 py-2 text-blue-800 border border-blue-300 rounded-md bg-blue-50 focus:outline-none focus:ring-1 focus:ring-blue-300"
               />
             </div>
             <div>
@@ -83,16 +58,7 @@
                 name="password"
                 placeholder="password"
                 v-model="signup.password"
-                class="
-                  w-full
-                  px-3
-                  py-2
-                  text-blue-800
-                  border border-blue-300
-                  rounded-md
-                  bg-blue-50
-                  focus:outline-none focus:ring-1 focus:ring-blue-300
-                "
+                class="w-full px-3 py-2 text-blue-800 border border-blue-300 rounded-md bg-blue-50 focus:outline-none focus:ring-1 focus:ring-blue-300"
               />
             </div>
           </div> 
@@ -107,14 +73,7 @@
               <button
                 @click="showModal = false"
                 type="button"
-                class="
-                  w-full
-                  px-8
-                  py-3
-                  text-blue-600
-                  border border-blue-600
-                  rounded-md
-                "
+                class="w-full px-8 py-3 text-blue-600 border border-blue-600 rounded-md "
               >
                 Cancel
               </button>
@@ -149,11 +108,10 @@ export default {
   },
   methods: {
     async submitSignup() {
-      console.log(this.signup.email);
       try {
         let res = await this.$axios({
           method: "post",
-          url: process.env.PROJECT_API + "/user/signup",
+          url: "/user/signup",
           data: this.signup,
         });
         let data = res.data;

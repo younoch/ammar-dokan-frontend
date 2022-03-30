@@ -41,7 +41,6 @@ export const actions = {
   },
   INIT_AUTH(context, req) {
     let token, tokenExpireTime;
-    console.log({req});
     if (req) {
       if (!req.headers.cookie) {
         return;
@@ -50,15 +49,13 @@ export const actions = {
       if (!jwtCookie) {
         return;
       }
-      console.log({jwtCookie})
-       token = jwtCookie.split('=')[1];
+      token = jwtCookie.split('=')[1];
       tokenExpireTime = req.headers.cookie.split(';').find(c => c.trim().startsWith('tokenCookieExpiretion=')).split("=")[1];
 
     } else {
-       token = localStorage.getItem('token');
-       tokenExpireTime = localStorage.getItem('tokenExpireTime'); 
+      token = localStorage.getItem('token');
+      tokenExpireTime = localStorage.getItem('tokenExpireTime');
       const newDate = new Date().getTime()
-      console.log("diifrence = ", tokenExpireTime - newDate)
       if (newDate > tokenExpireTime && !token) {
         context.dispatch('LOGOUT');
         return;
@@ -66,14 +63,16 @@ export const actions = {
     }
     context.commit('CURRENT_TOKEN', token);
     context.dispatch("SET_LOGOUT_TIMER", tokenExpireTime - new Date().getTime())
-    console.log('my token', token)
   },
   LOGOUT(context) {
     context.commit('CLEAR_TOKEN');
     Cookie.remove('jwt');
     Cookie.remove('tokenCookieExpiretion');
-    localStorage.removeItem('token');
-    localStorage.removeItem('tokenExpireTime');
+    if (process.client) {
+      localStorage.removeItem('token');
+      localStorage.removeItem('tokenExpireTime');
+    }
+
   }
 };
 

@@ -149,7 +149,7 @@ export default {
       try {
         let res = await this.$axios({
           method: "post",
-          url: process.env.PROJECT_API + "/products",
+          url:"/products",
           data: formData,
           headers: {
             Authorization: `Bearer ${this.$store.state.currentToken}`,
