@@ -7,7 +7,7 @@
           class="px-4 py-1 text-lg font-medium text-indigo-600 bg-white rounded-lg ca hover:bg-indigo-50"
           @click="showCreateModal = true"
         >
-          <fa class="mr-1" :icon="['fa', 'plus']" /> Add new
+           <span class="mr-1 text-2xl font-bold leading-3">+</span> Add new
         </button>
       </div>
       <action-modal

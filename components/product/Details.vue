@@ -28,10 +28,10 @@
 
     <div class="flex justify-between flex-grow py-2 place-items-end">
       <button
-        class="px-4 py-1 text-lg font-medium text-indigo-600 bg-white rounded-lg ca hover:bg-indigo-50"
+        class="px-4 py-1 text-lg font-medium text-indigo-600 bg-white rounded-lg hover:bg-indigo-50"
         @click="showEditModal = true"
       >
-        <fa class="mr-2" :icon="['fa', 'square-pen']" /> Edit
+        <fa  :icon="['fa', 'square-pen']" /> Edit
       </button>
       <action-modal
         v-if="showEditModal"
