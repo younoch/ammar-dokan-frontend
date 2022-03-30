@@ -4,10 +4,10 @@
       <div class="flex justify-between px-8 py-3 bg-indigo-800 rounded-lg">
         <h2 class="text-2xl font-bold text-white uppercase">Products list</h2>
         <button
-          class="px-4 py-1 text-lg font-medium text-indigo-600 bg-white rounded-lg ca hover:bg-indigo-50"
+          class="px-4 py-1 text-lg font-medium text-indigo-600 bg-white rounded-lg  ca hover:bg-indigo-50"
           @click="showCreateModal = true"
         >
-           <span class="mr-1 text-2xl font-bold leading-3">+</span> Add new
+          <span class="mr-1 text-2xl font-bold leading-3">+</span> Add new
         </button>
       </div>
       <action-modal
@@ -21,7 +21,7 @@
       </action-modal>
 
       <div
-        class="flex flex-col flex-grow px-8 py-4 mt-2 border-2 border-indigo-600 divide-y rounded-md divide-coolGray-700 bg-indigo-50"
+        class="flex flex-col flex-grow px-8 py-4 mt-2 border-2 border-indigo-600 divide-y rounded-md  divide-coolGray-700 bg-indigo-50"
       >
         <ProductItem
           class="w-full"
@@ -48,8 +48,8 @@
 
 <script>
 export default {
-    name: "products",
-    middleware: ['check-auth','auth'],
+  name: "products",
+  middleware: ["check-auth", "auth"],
   data() {
     return {
       productDetails: "",
@@ -60,7 +60,7 @@ export default {
     const products = await context.app
       .$axios({
         method: "get",
-        url:"/products",
+        url: "/products",
         headers: {
           Authorization: `Bearer ${context.store.state.currentToken}`,
         },
