@@ -148,7 +148,7 @@ export default {
       try {
         let res = await this.$axios({
           method: "post",
-          url: process.env.PROJECT_API + "/user/login",
+          url: "/user/login",
           data: this.login,
         });
         let data = res.data;
