@@ -58,7 +58,6 @@ export const actions = {
       token = localStorage.getItem('token');
       tokenExpireTime = localStorage.getItem('tokenExpireTime');
       const newDate = new Date().getTime()
-      console.log("diifrence = ", tokenExpireTime - newDate)
       if (newDate > tokenExpireTime && !token) {
         context.dispatch('LOGOUT');
         return;
@@ -66,7 +65,6 @@ export const actions = {
     }
     context.commit('CURRENT_TOKEN', token);
     context.dispatch("SET_LOGOUT_TIMER", tokenExpireTime - new Date().getTime())
-    console.log('my token', token)
   },
   LOGOUT(context) {
     context.commit('CLEAR_TOKEN');

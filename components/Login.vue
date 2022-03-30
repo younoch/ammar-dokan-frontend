@@ -127,7 +127,9 @@ export default {
     };
   },
 
-  created() {},
+  created() {
+    console.log("process.env", process.env.PROJECT_API)
+  },
 
   data() {
     return {
