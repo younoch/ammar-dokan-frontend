@@ -4,8 +4,8 @@
         <div
           class="py-2 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl"
         >
-          <div class="relative flex items-center justify-between">
-            <div class="flex items-center">
+          <div class="relative flex items-center justify-end lg:justify-between">
+            <div class="items-center hidden lg:flex">
               <nuxt-link
                 to="/"
                 aria-label="Company"
@@ -13,11 +13,11 @@
                 class="inline-flex items-center mr-8"
               >
                 <span
-                  class="ml-2 text-center text-xl font-bold tracking-wide text-gray-100 uppercase "
+                  class="ml-2 text-xl font-bold tracking-wide text-center text-gray-100 uppercase "
                   >Amar <br> Dhokan</span
                 >
               </nuxt-link>
-              <ul class="flex items-center text-xl space-x-8 lg:flex">
+              <ul class="flex items-center space-x-8 text-xl lg:flex">
                 <li>
                   <nuxt-link
                     to="/products"
@@ -49,15 +49,10 @@
             </div>
             <ul
 
-              class="flex items-center space-x-8 cursor-default lg:flex"
+              class="items-center hidden space-x-8 cursor-default lg:flex"
             >
               <li>
                 <div class="flex-shrink-0 w-10 h-10">
-                  <img
-                    class="w-full h-full rounded-full"
-                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
-                    alt=""
-                  />
                 </div>
               </li>
               <li @click="onLogout">
@@ -204,10 +199,6 @@ export default {
     };
   },
   computed: {
-    isSignin() {
-      const isSignin = this.$store.state.isSignin;
-      return isSignin;
-    },
   },
   methods: {
     onLogout() {

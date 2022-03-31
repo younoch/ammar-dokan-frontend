@@ -6,9 +6,7 @@
     <picture>
       <img
         class="object-cover w-full h-48 cover-fill"
-        src="
-          https://www.ledgerinsights.com/wp-content/uploads/2020/10/sugar.2-810x476.jpg
-        "
+        src=""
         alt="image not found"
       />
     </picture>
@@ -28,7 +26,7 @@
 
     <div class="flex justify-between flex-grow py-2 place-items-end">
       <button
-        class="px-4 py-1 text-lg font-medium text-indigo-600 bg-white rounded-lg  hover:bg-indigo-50"
+        class="px-4 py-1 text-lg font-medium text-indigo-600 bg-white rounded-lg hover:bg-indigo-50"
         @click="showEditModal = true"
       >
         <svg
@@ -69,7 +67,7 @@
       >
         <ProductUpdate :product="productDetails" />
       </action-modal>
-      <div>
+      
         <button @click="showDeleteModal = true">
           <svg
             class="inline-block"
@@ -84,7 +82,7 @@
           </svg>
           Delete
         </button>
-      </div>
+      
     </div>
     <action-modal
       v-if="showDeleteModal"
@@ -101,13 +99,13 @@
       <div class="mt-4 text-right">
         <button
           @click="showDeleteModal = false"
-          class="px-4 py-2 text-sm text-gray-600  focus:outline-none hover:underline"
+          class="px-4 py-2 text-sm text-gray-600 focus:outline-none hover:underline"
         >
           Cancel
         </button>
         <button
           @click="deleteProduct"
-          class="px-4 py-2 mr-2 text-sm text-white bg-red-500 rounded  focus:outline-none hover:bg-red-400"
+          class="px-4 py-2 mr-2 text-sm text-white bg-red-500 rounded focus:outline-none hover:bg-red-400"
         >
           Confirm
         </button>
