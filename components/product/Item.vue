@@ -12,7 +12,7 @@
           </div>
 
           <div class="flex items-center text-left col-span-3 min-w-[40px]">
-            <p class="text-lg font-semibold">{{ product.price }}€</p>
+            <p class="text-lg font-semibold text-right">৳ {{ product.price }}</p>
           </div>
           <div class="flex justify-end col-span-4 text-sm divide-x">
             <button
@@ -52,7 +52,7 @@ export default {
   props: ["product"],
   methods: {
     passId() {
-      this.$emit("product-id", this.product._id);
+      this.$emit("product-id", this.product._id, false);
     },
   },
 };
