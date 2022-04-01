@@ -1,10 +1,10 @@
 <template>
   <section class="container grid h-full grid-cols-6 gap-2 mx-auto my-2">
     <div class="flex-col lg:flex lg:col-span-4" :class="tabSwitch ? 'col-span-6': `hidden`">
-      <div class="flex justify-between px-8 py-3 bg-indigo-800 rounded-lg">
-        <h2 class="text-2xl font-bold text-white uppercase">Products list</h2>
+      <div class="flex justify-between px-2 lg:px-8 py-3 bg-indigo-800 rounded-lg">
+        <h2 class="lg:text-2xl text-xl font-bold text-white uppercase">Products list</h2>
         <button
-          class="px-4 py-1 text-lg font-medium text-indigo-600 bg-white rounded-lg ca hover:bg-indigo-50"
+          class="px-4 py-1 lg:text-lg font-medium text-indigo-600 bg-white rounded-lg ca hover:bg-indigo-50"
           @click="showCreateModal = true"
         >
           <span class="mr-1 text-2xl font-bold leading-3">+</span> Add new
@@ -21,7 +21,7 @@
       </action-modal>
 
       <div
-        class="flex flex-col flex-grow px-8 py-4 mt-2 border-2 border-indigo-600 divide-y rounded-md divide-coolGray-700 bg-indigo-50"
+        class="flex flex-col flex-grow px-2 lg:px-8 py-4 mt-2 border-2 border-indigo-600 divide-y rounded-md divide-coolGray-700 bg-indigo-50"
       >
         <ProductItem
           class="w-full"
@@ -34,7 +34,7 @@
     </div>
     <div class="flex-col lg:flex lg:col-span-2" :class="!tabSwitch ? 'col-span-6': `hidden`">
       <div class="px-8 py-3 bg-indigo-800 border-2 rounded-lg">
-        <h2 class="text-2xl font-bold text-center text-white uppercase">
+        <h2 class="lg:text-2xl text-xl font-bold text-center text-white uppercase">
           Details
         </h2>
       </div>

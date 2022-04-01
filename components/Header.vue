@@ -2,7 +2,7 @@
     <header class="w-full">
       <div class="bg-indigo-900">
         <div
-          class="py-2 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl"
+          class="pb-2 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl"
         >
           <div class="relative flex items-center justify-end lg:justify-between">
             <div class="items-center hidden lg:flex">
@@ -57,7 +57,7 @@
               </li>
               <li @click="onLogout">
                 <nuxt-link
-                  class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                  class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded-b shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
                   to="/"
                   >Sign out</nuxt-link
                 >
@@ -67,7 +67,7 @@
               <button
                 aria-label="Open Menu"
                 title="Open Menu"
-                class="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline"
+                class="p-2 mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline"
                 @click="isMenuOpen = true"
               >
                 <svg class="w-5 text-gray-600" viewBox="0 0 24 24">
@@ -86,7 +86,7 @@
                 </svg>
               </button>
               <div v-show="isMenuOpen" class="absolute top-0 left-0 w-full">
-                <div class="p-5 bg-white border rounded shadow-sm">
+                <div class="p-5 bg-white border rounded-b shadow-sm">
                   <div class="flex items-center justify-between mb-4">
                     <div>
                       <a
@@ -164,10 +164,10 @@
                       <li >
                         <a
                           href="/"
-                          aria-label="Sign in"
-                          title="Sign in"
+                          aria-label="log out"
+                          title="log out"
                           class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                          >Sign in
+                          >Log out
                         </a>
                       </li>
                       <li>

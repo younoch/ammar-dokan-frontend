@@ -3,6 +3,7 @@ module.exports = {
   css: [
     '~assets/css/main.css'
   ],
+  important: true,
   buildModules: [
     '@nuxtjs/style-resources',
     '@nuxt/postcss8',

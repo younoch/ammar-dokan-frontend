@@ -100,7 +100,6 @@
               <p class="mt-6 text-lg text-center text-gray-600">
                 Don't have an account yet? click
               </p>
-
               <SignUp />
             </form>
           </div>

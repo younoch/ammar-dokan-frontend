@@ -12,21 +12,21 @@
     </picture>
 
     <div class="flex justify-between py-1">
-      <h1 class="text-3xl font-bold text-indigo-600 capitalize">
+      <h1 class="text-2xl font-bold text-indigo-600 capitalize lg:text-3xl">
         {{ productDetails.name }}
       </h1>
-      <h3 class="text-2xl font-medium text-indigo-600">
+      <h3 class="text-xl font-medium text-indigo-600 lg:text-2xl">
         {{ productPrice }}
       </h3>
     </div>
     <div class="flex justify-between py-1">
       <h2 class="text-xl font-medium text-center text-indigo-600">Category:</h2>
-      <h3 class="text-2xl font-medium text-indigo-600">Classic</h3>
+      <h3 class="text-xl font-medium text-indigo-600 lg:text-2xl">Classic</h3>
     </div>
-
-    <div class="flex justify-between flex-grow py-2 place-items-end">
+    <div class="flex flex-wrap gap-y-2 items-end justify-around flex-grow">
+      <button class="w-11/12 px-5 py-2 mx-auto text-indigo-600 bg-white border-2 border-indigo-600 rounded-lg hover:bg-indigo-500 hover:text-white"> <span class="mdi mdi-cart text-lg"></span> Add to card</button>
       <button
-        class="px-4 py-1 text-lg font-medium text-indigo-600 bg-white rounded-lg hover:bg-indigo-50"
+        class="button-half"
         @click="showEditModal = true"
       >
         <svg
@@ -58,32 +58,33 @@
         </svg>
         Edit
       </button>
-      <action-modal
-        v-if="showEditModal"
-        type="info"
-        title="Update product"
-        width="sm"
-        @close="showEditModal = false"
-      >
-        <ProductUpdate :product="productDetails" />
-      </action-modal>
-      
-        <button @click="showDeleteModal = true">
-          <svg
-            class="inline-block"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            width="24px"
-            height="24px"
-          >
-            <path
-              d="M 10 2 L 9 3 L 3 3 L 3 5 L 21 5 L 21 3 L 15 3 L 14 2 L 10 2 z M 4.3652344 7 L 6.0683594 22 L 17.931641 22 L 19.634766 7 L 4.3652344 7 z"
-            />
-          </svg>
-          Delete
-        </button>
-      
+      <button class="button-half" @click="showDeleteModal = true">
+        <svg
+          class="inline-block "
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          width="24px"
+          height="24px"
+        >
+          <path
+            d="M 10 2 L 9 3 L 3 3 L 3 5 L 21 5 L 21 3 L 15 3 L 14 2 L 10 2 z M 4.3652344 7 L 6.0683594 22 L 17.931641 22 L 19.634766 7 L 4.3652344 7 z"
+          />
+        </svg>
+        Delete
+      </button>
     </div>
+
+    <!-- Modal for product update -->
+    <action-modal
+      v-if="showEditModal"
+      type="info"
+      title="Update product"
+      width="sm"
+      @close="showEditModal = false"
+    >
+      <ProductUpdate :product="productDetails" />
+    </action-modal>
+    <!-- Modal for product Delete -->
     <action-modal
       v-if="showDeleteModal"
       type="danger"
@@ -99,13 +100,13 @@
       <div class="mt-4 text-right">
         <button
           @click="showDeleteModal = false"
-          class="px-4 py-2 text-sm text-gray-600 focus:outline-none hover:underline"
+          class="w-12 px-2 py-2 text-sm text-gray-600 md:px-4 focus:outline-none hover:underline"
         >
           Cancel
         </button>
         <button
           @click="deleteProduct"
-          class="px-4 py-2 mr-2 text-sm text-white bg-red-500 rounded focus:outline-none hover:bg-red-400"
+          class="px-2 py-2 text-sm text-white bg-red-500 rounded lg:px-4 focus:outline-none hover:bg-red-400"
         >
           Confirm
         </button>
@@ -115,16 +116,12 @@
 </template>
 
 <script>
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 export default {
   data() {
     return {
       showDeleteModal: false,
       showEditModal: false,
     };
-  },
-  components: {
-    FontAwesomeIcon,
   },
 
   props: ["product-details"],
@@ -158,8 +155,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-button {
-  @apply w-36 px-5 py-2 rounded-lg border-2 hover:bg-indigo-500 border-indigo-600 text-indigo-600 hover:text-white bg-white;
+.button-half {
+  @apply w-5/12 px-5 py-2 rounded-lg border-2 hover:bg-indigo-500 border-indigo-600 text-indigo-600 hover:text-white bg-white ;
 }
 button svg path {
   @apply fill-indigo-600;
