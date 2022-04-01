@@ -4,10 +4,10 @@
       class="flex justify-center flex-1 max-w-screen-xl m-0 bg-white shadow sm:rounded-lg"
     >
       <div class="p-6 lg:w-1/2 xl:w-5/12 sm:p-12">
-        <div class="flex flex-col items-center mt-8">
-          <h1 class="text-2xl font-bold text-center xl:text-3xl">
-            login for <br />
-            <span class="text-3xl font-extrabold">Amar Dhokan</span>
+        <div class="flex flex-col items-center mt-3 lg:mt-8">
+          <h1 class="text-2xl font-medium text-gray-600 text-center xl:text-3xl">
+            Login For <br />
+            <span class="text-3xl font-extrabold uppercase text-indigo-600">Amar Dhokan</span>
           </h1>
           <div class="flex-1 w-full mt-8">
 <!--             <div class="flex flex-col items-center">
@@ -83,21 +83,10 @@
                 type="submit"
                 class="flex items-center justify-center w-full py-4 mt-5 font-semibold tracking-wide text-gray-100 transition-all duration-300 ease-in-out bg-indigo-500 rounded-lg hover:bg-indigo-700 focus:shadow-outline focus:outline-none"
               >
-                <svg
-                  class="w-6 h-6 -ml-2"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
-                  <circle cx="8.5" cy="7" r="4" />
-                  <path d="M20 8v6M23 11h-6" />
-                </svg>
-                <span class="ml-3"> Sign In </span>
+              <span class="mdi mdi-login-variant text-xl"></span>
+                <span class="ml-2"> Sign In </span>
               </button>
-              <p class="mt-6 text-lg text-center text-gray-600">
+              <p class="lg:mt-6 mt-2  lg:text-lg text-center text-gray-600">
                 Don't have an account yet? click
               </p>
               <SignUp />
