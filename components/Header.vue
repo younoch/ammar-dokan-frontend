@@ -2,10 +2,10 @@
     <header class="w-full">
       <div class="bg-indigo-900">
         <div
-          class="py-2 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl"
+          class="pb-2 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl"
         >
-          <div class="relative flex items-center justify-between">
-            <div class="flex items-center">
+          <div class="relative flex items-center justify-end lg:justify-between">
+            <div class="items-center hidden lg:flex">
               <nuxt-link
                 to="/"
                 aria-label="Company"
@@ -13,11 +13,11 @@
                 class="inline-flex items-center mr-8"
               >
                 <span
-                  class="ml-2 text-center text-xl font-bold tracking-wide text-gray-100 uppercase "
+                  class="ml-2 text-xl font-bold tracking-wide text-center text-gray-100 uppercase "
                   >Amar <br> Dhokan</span
                 >
               </nuxt-link>
-              <ul class="flex items-center text-xl space-x-8 lg:flex">
+              <ul class="flex items-center space-x-8 text-xl lg:flex">
                 <li>
                   <nuxt-link
                     to="/products"
@@ -49,20 +49,15 @@
             </div>
             <ul
 
-              class="flex items-center space-x-8 cursor-default lg:flex"
+              class="items-center hidden space-x-8 cursor-default lg:flex"
             >
               <li>
                 <div class="flex-shrink-0 w-10 h-10">
-                  <img
-                    class="w-full h-full rounded-full"
-                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
-                    alt=""
-                  />
                 </div>
               </li>
               <li @click="onLogout">
                 <nuxt-link
-                  class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                  class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded-b shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
                   to="/"
                   >Sign out</nuxt-link
                 >
@@ -72,7 +67,7 @@
               <button
                 aria-label="Open Menu"
                 title="Open Menu"
-                class="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline"
+                class="p-2 mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline"
                 @click="isMenuOpen = true"
               >
                 <svg class="w-5 text-gray-600" viewBox="0 0 24 24">
@@ -91,7 +86,7 @@
                 </svg>
               </button>
               <div v-show="isMenuOpen" class="absolute top-0 left-0 w-full">
-                <div class="p-5 bg-white border rounded shadow-sm">
+                <div class="p-5 bg-white border rounded-b shadow-sm">
                   <div class="flex items-center justify-between mb-4">
                     <div>
                       <a
@@ -169,10 +164,10 @@
                       <li >
                         <a
                           href="/"
-                          aria-label="Sign in"
-                          title="Sign in"
+                          aria-label="log out"
+                          title="log out"
                           class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                          >Sign in
+                          >Log out
                         </a>
                       </li>
                       <li>
@@ -204,10 +199,6 @@ export default {
     };
   },
   computed: {
-    isSignin() {
-      const isSignin = this.$store.state.isSignin;
-      return isSignin;
-    },
   },
   methods: {
     onLogout() {

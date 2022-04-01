@@ -12,12 +12,12 @@
           </div>
 
           <div class="flex items-center text-left col-span-3 min-w-[40px]">
-            <p class="text-lg font-semibold">{{ product.price }}€</p>
+            <p class="text-lg font-semibold text-right">৳ {{ product.price }}</p>
           </div>
           <div class="flex justify-end col-span-4 text-sm divide-x">
             <button
               @click="passId"
-              class="block px-4 py-2 font-medium text-indigo-600 uppercase bg-white border-2 border-indigo-600 rounded hover:text-white hover:bg-indigo-600 font-poppins"
+              class="block px-2 lg:px-4 py-2 font-medium text-indigo-600 uppercase bg-white border-2 border-indigo-600 rounded hover:text-white hover:bg-indigo-600 font-poppins"
             >
               <svg viewBox="0 0 24 24" class="inline w-4 h-4">
                 <path
@@ -52,7 +52,7 @@ export default {
   props: ["product"],
   methods: {
     passId() {
-      this.$emit("product-id", this.product._id);
+      this.$emit("product-id", this.product._id, false);
     },
   },
 };

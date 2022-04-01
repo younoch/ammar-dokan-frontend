@@ -35,23 +35,13 @@ export default {
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
-    '@nuxtjs/fontawesome',
     '@nuxtjs/dotenv'
   ],
-
-  //https://levelup.gitconnected.com/nuxt-js-and-fontawesome-a-simple-walk-through-78f35605d841
-  fontawesome: {
-    component: 'fa',
-    icons: {
-      solid: true,
-      brands: ['faFacebook', 'faTwitter']
-    }
-  },
-
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    'nuxtjs-mdi-font'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
