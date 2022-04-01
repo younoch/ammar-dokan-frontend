@@ -1,13 +1,13 @@
 <template>
-  <div class="flex flex-col w-full lg:min-h-screen scroll-smooth">
+  <div class="flex flex-col justify-between w-full min-h-screen scroll-smooth">
     <Header />
-    <main class="flex flex-col flex-grow w-full mx-auto">
+    <main class="flex flex-col flex-grow w-full mx-auto max-h-screen">
       <nuxt class="flex-grow" />
     </main>
     <footer
-      class="flex items-center justify-center w-full text-white bg-indigo-900 h-14 "
+      class="flex items-center  justify-center w-full  bg-indigo-900 h-10 lg:h-14 "
     >
-      <p>My Nuxt App &copy; {{ new Date().getFullYear() }}</p>
+      <p class="text-white text-sm lg:text-base">My Nuxt App &copy; {{ new Date().getFullYear() }}</p>
     </footer>
   </div>
 </template>
