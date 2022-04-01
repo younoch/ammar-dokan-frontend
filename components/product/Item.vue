@@ -17,7 +17,7 @@
           <div class="flex justify-end col-span-4 text-sm divide-x">
             <button
               @click="passId"
-              class="block px-4 py-2 font-medium text-indigo-600 uppercase bg-white border-2 border-indigo-600 rounded hover:text-white hover:bg-indigo-600 font-poppins"
+              class="block px-2 lg:px-4 py-2 font-medium text-indigo-600 uppercase bg-white border-2 border-indigo-600 rounded hover:text-white hover:bg-indigo-600 font-poppins"
             >
               <svg viewBox="0 0 24 24" class="inline w-4 h-4">
                 <path
