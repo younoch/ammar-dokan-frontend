@@ -1,16 +1,29 @@
 <template>
   <div class="flex items-center justify-center">
     <div
-      class="flex justify-center flex-1 max-w-screen-xl m-0 bg-white shadow sm:rounded-lg"
+      class="
+        flex
+        justify-center
+        flex-1
+        max-w-screen-xl
+        m-0
+        bg-white
+        shadow
+        sm:rounded-lg
+      "
     >
-      <div class="p-6 lg:w-1/2 xl:w-5/12 sm:p-12">
-        <div class="flex flex-col items-center mt-8">
-          <h1 class="text-2xl font-bold text-center xl:text-3xl">
-            login for <br />
-            <span class="text-3xl font-extrabold">Amar Dhokan</span>
+      <div class="p-4 lg:w-1/2 xl:w-5/12 sm:p-8">
+        <div class="flex flex-col items-center mt-3 lg:mt-8">
+          <h1
+            class="text-2xl font-medium text-gray-600 text-center xl:text-3xl"
+          >
+            Login For <br />
+            <span class="text-3xl font-extrabold uppercase text-indigo-600"
+              >Amar Dhokan</span
+            >
           </h1>
-          <div class="flex-1 w-full mt-8">
-<!--             <div class="flex flex-col items-center">
+          <div class="flex-1 w-full mt-6 lg:mt-8">
+            <!--             <div class="flex flex-col items-center">
               <button
                 class="flex items-center justify-center w-full max-w-xs py-3 font-bold text-gray-800 transition-all duration-300 ease-in-out bg-indigo-100 rounded-lg shadow-sm focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline"
               >
@@ -51,7 +64,7 @@
                 <span class="ml-4"> Sign Up with GitHub </span>
               </button>
             </div> -->
-<!--             <div class="my-12 text-center border-b">
+            <!--             <div class="my-12 text-center border-b">
               <div
                 class="inline-block px-2 text-sm font-medium leading-none tracking-wide text-gray-600 transform translate-y-1/2 bg-white "
               >
@@ -60,44 +73,88 @@
             </div> -->
 
             <form @submit.prevent="submitLogin" class="max-w-xs mx-auto">
+              <label class="text-gray-600 Lg:text-lg mb-2" for="email"
+                >Email / Username</label
+              >
               <input
-                class="w-full px-8 py-4 text-sm font-medium placeholder-gray-500 bg-gray-100 border border-gray-200 rounded-lg focus:outline-none focus:border-gray-400 focus:bg-white"
+                id="email"
+                role="required"
+                class="
+                  w-full
+                  px-6
+                  lg:px-8
+                  py-3
+                  lg:py-4
+                  text-sm
+                  font-medium
+                  placeholder-gray-500
+                  bg-gray-100
+                  border border-gray-200
+                  rounded-lg
+                  focus:outline-none focus:border-gray-400 focus:bg-white
+                "
                 type="email"
                 placeholder="Email"
                 v-model="login.email"
               />
-              <input
-                class="w-full px-8 py-4 mt-5 text-sm font-medium placeholder-gray-500 bg-gray-100 border border-gray-200 rounded-lg focus:outline-none focus:border-gray-400 focus:bg-white"
-                type="password"
-                placeholder="Password"
-                v-model="login.password"
-              />
-              <div class="flex justify-between mb-2">
+              <div class="mt-4 lg:mt-5">
+                <label class="text-gray-600 lg:text-lg mb-2" for="email"
+                  >Password</label
+                >
+                <input
+                  class="
+                    w-full
+                    px-6
+                    lg:px-8
+                    py-3
+                    lg:py-4
+                    text-sm
+                    font-medium
+                    placeholder-gray-500
+                    bg-gray-100
+                    border border-gray-200
+                    rounded-lg
+                    focus:outline-none focus:border-gray-400 focus:bg-white
+                  "
+                  type="password"
+                  placeholder="Password"
+                  v-model="login.password"
+                />
+              </div>
+
+              <!--               <div class="flex justify-between mb-2">
                 <a
                   href="#"
                   class="text-xs text-blue-600 test-right hover:underline"
                   >Forgot password?</a
                 >
-              </div>
+              </div> -->
               <button
                 type="submit"
-                class="flex items-center justify-center w-full py-4 mt-5 font-semibold tracking-wide text-gray-100 transition-all duration-300 ease-in-out bg-indigo-500 rounded-lg hover:bg-indigo-700 focus:shadow-outline focus:outline-none"
+                class="
+                  flex
+                  items-center
+                  justify-center
+                  w-full
+                  py-2
+                  lg:py-3
+                  mt-5
+                  font-semibold
+                  tracking-wide
+                  text-gray-100
+                  transition-all
+                  duration-300
+                  ease-in-out
+                  bg-indigo-500
+                  rounded-lg
+                  hover:bg-indigo-700
+                  focus:shadow-outline focus:outline-none disabled:text-indigo-200
+                "
               >
-                <svg
-                  class="w-6 h-6 -ml-2"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
-                  <circle cx="8.5" cy="7" r="4" />
-                  <path d="M20 8v6M23 11h-6" />
-                </svg>
-                <span class="ml-3"> Sign In </span>
+                <span class="mdi mdi-login-variant text-xl"></span>
+                <span class="ml-2"> Sign In </span>
               </button>
-              <p class="mt-6 text-lg text-center text-gray-600">
+              <p class="lg:mt-6 mt-2 lg:text-lg text-center text-gray-600">
                 Don't have an account yet? click
               </p>
               <SignUp />
@@ -119,7 +176,7 @@
 
 <script>
 export default {
-
+  name: 'signup',
   data() {
     return {
       login: {
@@ -140,7 +197,7 @@ export default {
           data: this.login,
         });
         let data = res.data;
-        this.$store.commit("CURRENT_TOKEN",   data.token);
+        this.$store.commit("CURRENT_TOKEN", data.token);
         this.$store.dispatch("SET_LOGOUT_TIMER", 5 * 60 * 1000);
         this.$router.push("/products");
         return data;

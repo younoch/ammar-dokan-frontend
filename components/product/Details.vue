@@ -24,7 +24,7 @@
       <h3 class="text-xl font-medium text-indigo-600 lg:text-2xl">Classic</h3>
     </div>
     <div class="flex flex-wrap gap-y-2 items-end justify-around flex-grow">
-      <button class="w-11/12 px-5 py-2 mx-auto text-indigo-600 bg-white border-2 border-indigo-600 rounded-lg hover:bg-indigo-500 hover:text-white"> <span class="mdi mdi-cart text-lg"></span> Add to card</button>
+      <button @click="cartRouter" class="w-11/12 px-5 py-2 mx-auto text-indigo-600 bg-white border-2 border-indigo-600 rounded-lg hover:bg-indigo-500 hover:text-white"> <span class="mdi mdi-cart text-lg"></span> Add to cart</button>
       <button
         class="button-half"
         @click="showEditModal = true"
@@ -150,6 +150,9 @@ export default {
         return error.response;
       }
     },
+    cartRouter() {
+      this.$router.push('/orders/'+ this.productDetails._id)
+    }
   },
 };
 </script>
