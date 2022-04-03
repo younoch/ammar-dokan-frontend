@@ -1,11 +1,11 @@
 <template>
   <div x-data="{show:false}">
-    <div class="flex items-center justify-center mt-4">
+    <div class="flex items-center justify-center mt-3 lg:mt-4">
       <button
         @click="showModal = true"
         class="
         flex items-center justify-center
-          w-full p-4
+          w-full p-2 lg:p-3
           font-semibold
           text-blue-100
           bg-indigo-500
@@ -26,7 +26,7 @@
           <circle cx="8.5" cy="7" r="4" />
           <path d="M20 8v6M23 11h-6" />
         </svg>
-        Signup Now!
+        Signup Now !
       </button>
     </div>
     <div

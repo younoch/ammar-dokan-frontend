@@ -237,7 +237,7 @@
           </div>
           <div class="flex">
             <span class="title-font font-medium text-2xl text-gray-900"
-              >${{product.price}}</span
+              >৳{{product.price}}</span
             >
             <button
               class="
@@ -312,5 +312,4 @@ export default {
     };
   },
 };
-// this.$route.params.create
 </script>
