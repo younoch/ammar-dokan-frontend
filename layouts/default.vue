@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col justify-between w-full min-h-screen scroll-smooth">
     <Header />
-    <main class="flex flex-col flex-grow w-full mx-auto max-h-screen">
+    <main class="flex flex-col flex-grow w-full mx-auto min-h-[100vh-40px]">
       <nuxt class="flex-grow" />
     </main>
     <footer
