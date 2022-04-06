@@ -1,24 +1,15 @@
 <template>
   <div class="flex items-center justify-center">
     <div
-      class="
-        flex
-        justify-center
-        flex-1
-        max-w-screen-xl
-        m-0
-        bg-white
-        shadow
-        sm:rounded-lg
-      "
+      class="flex justify-center flex-1 max-w-screen-xl m-0 bg-white shadow sm:rounded-lg"
     >
       <div class="p-4 lg:w-1/2 xl:w-5/12 sm:p-8">
         <div class="flex flex-col items-center mt-3 lg:mt-8">
           <h1
-            class="text-2xl font-medium text-gray-600 text-center xl:text-3xl"
+            class="text-2xl font-medium text-center text-gray-600 xl:text-3xl"
           >
             Login For <br />
-            <span class="text-3xl font-extrabold uppercase text-indigo-600"
+            <span class="text-3xl font-extrabold text-indigo-600 uppercase"
               >Amar Dhokan</span
             >
           </h1>
@@ -73,49 +64,34 @@
             </div> -->
 
             <form @submit.prevent="submitLogin" class="max-w-xs mx-auto">
-              <label class="text-gray-600 Lg:text-lg mb-2" for="email"
+              <label class="mb-2 text-gray-600 Lg:text-lg" for="email"
                 >Email / Username</label
               >
               <input
                 id="email"
-                role="required"
-                class="
-                  w-full
-                  px-6
-                  lg:px-8
-                  py-3
-                  lg:py-4
-                  text-sm
-                  font-medium
-                  placeholder-gray-500
-                  bg-gray-100
-                  border border-gray-200
-                  rounded-lg
-                  focus:outline-none focus:border-gray-400 focus:bg-white
-                "
+                class="w-full px-6 py-3 text-sm font-medium placeholder-gray-500 bg-gray-100 border border-gray-200 rounded-lg lg:px-8 lg:py-4 focus:outline-none focus:border-gray-400 focus:bg-white"
                 type="email"
                 placeholder="Email"
-                v-model="login.email"
+                v-model.trim="login.email"
+                @blur="$v.login.email.$touch()"
               />
+              <!-- <template v-if="$v.login.email.$error"> -->
+              <!-- <p v-if="!$v.login.email.required" class="text-red-500">
+                  Email is Required!
+                </p> -->
+              <!--                 <p
+                  v-else-if="!$v.login.email.email"
+                  class="text-red-500"
+                >
+                  Email is Invalid!
+                </p> -->
+              <!-- </template> -->
               <div class="mt-4 lg:mt-5">
-                <label class="text-gray-600 lg:text-lg mb-2" for="email"
+                <label class="mb-2 text-gray-600 lg:text-lg" for="email"
                   >Password</label
                 >
                 <input
-                  class="
-                    w-full
-                    px-6
-                    lg:px-8
-                    py-3
-                    lg:py-4
-                    text-sm
-                    font-medium
-                    placeholder-gray-500
-                    bg-gray-100
-                    border border-gray-200
-                    rounded-lg
-                    focus:outline-none focus:border-gray-400 focus:bg-white
-                  "
+                  class="w-full px-6 py-3 text-sm font-medium placeholder-gray-500 bg-gray-100 border border-gray-200 rounded-lg lg:px-8 lg:py-4 focus:outline-none focus:border-gray-400 focus:bg-white"
                   type="password"
                   placeholder="Password"
                   v-model="login.password"
@@ -131,33 +107,15 @@
               </div> -->
               <button
                 type="submit"
-                class="
-                  flex
-                  items-center
-                  justify-center
-                  w-full
-                  py-2
-                  lg:py-3
-                  mt-5
-                  font-semibold
-                  tracking-wide
-                  text-gray-100
-                  transition-all
-                  duration-300
-                  ease-in-out
-                  bg-indigo-500
-                  rounded-lg
-                  hover:bg-indigo-700
-                  focus:shadow-outline focus:outline-none disabled:text-indigo-200
-                "
+                class="flex items-center justify-center w-full py-2 mt-5 font-semibold tracking-wide text-gray-100 transition-all duration-300 ease-in-out bg-indigo-500 rounded-lg lg:py-3 hover:bg-indigo-700 focus:shadow-outline focus:outline-none disabled:text-indigo-200"
               >
-                <span class="mdi mdi-login-variant text-xl"></span>
+                <span class="text-xl mdi mdi-login-variant"></span>
                 <span class="ml-2"> Sign In </span>
               </button>
-              <p class="lg:mt-6 mt-2 lg:text-lg text-center text-gray-600">
+              <p class="mt-2 text-center text-gray-600 lg:mt-6 lg:text-lg">
                 Don't have an account yet? click
               </p>
-              <SignUp />
+              <!-- <SignUp /> -->
             </form>
           </div>
         </div>
@@ -175,8 +133,9 @@
 </template>
 
 <script>
+import { required, email, minLength } from "vuelidate/lib/validators";
 export default {
-  name: 'signup',
+  name: "signin",
   data() {
     return {
       login: {
@@ -185,28 +144,73 @@ export default {
       },
     };
   },
+
   computed: {
     // a computed getter
   },
+  validations: {
+    login: {
+      email: {
+        required,
+        email,
+      },
+      password: {
+        required,
+        minLength: minLength(8),
+      },
+    },
+  },
   methods: {
     async submitLogin() {
-      try {
-        let res = await this.$axios({
-          method: "post",
-          url: "/user/login",
-          data: this.login,
-        });
-        let data = res.data;
-        this.$store.commit("CURRENT_TOKEN", data.token);
-        this.$store.dispatch("SET_LOGOUT_TIMER", 5 * 60 * 1000);
-        this.$router.push("/products");
-        return data;
-      } catch (error) {
-        alert(error.response.data.message);
-
-        return error.response;
+      this.$v.$touch();
+      if (!this.$v.$invalid) {
+        retrun;
+      }
+      else if (this.email !== "") {
+        try {
+          let res = await this.$axios({
+            method: "post",
+            url: "/user/login",
+            data: this.login,
+          });
+          let data = res.data;
+          this.$store.commit("CURRENT_TOKEN", data.token);
+          this.$store.dispatch("SET_LOGOUT_TIMER", 5 * 60 * 1000);
+          this.$router.push("/products");
+          return data;
+        } catch (error) {
+          alert(error.response.data.message);
+          return error.response;
+        }
       }
     },
   },
 };
 </script>
+
+<style lang="scss" scoped>
+input {
+  border: 1px solid silver;
+  border-radius: 4px;
+  background: white;
+  padding: 5px 10px;
+}
+
+.dirty {
+  border-color: #5a5;
+  background: #efe;
+}
+
+.dirty:focus {
+  outline-color: #8e8;
+}
+
+.error {
+  border-color: red;
+  background: #fdd;
+}
+
+.error:focus {
+  outline-color: #f99;
+}
+</style>
