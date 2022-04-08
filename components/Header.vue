@@ -1,7 +1,7 @@
 <template>
   <header class="w-full">
     <div class="bg-indigo-900">
-      <div class="lg:pb-2 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
+      <div class="mx-auto lg:pb-2 sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
         <div class="relative flex items-center justify-end lg:justify-between">
           <div class="items-center hidden lg:flex">
             <nuxt-link
@@ -11,14 +11,7 @@
               class="inline-flex items-center mr-8"
             >
               <span
-                class="
-                  ml-2
-                  text-xl
-                  font-bold
-                  tracking-wide
-                  text-center text-gray-100
-                  uppercase
-                "
+                class="ml-2 text-xl font-bold tracking-wide text-center text-gray-100 uppercase "
                 >Amar <br />
                 Dhokan</span
               >
@@ -29,14 +22,7 @@
                   to="/products"
                   aria-label="Our product"
                   title="Our product"
-                  class="
-                    font-medium
-                    tracking-wide
-                    text-gray-100
-                    transition-colors
-                    duration-200
-                    hover:text-teal-accent-400
-                  "
+                  class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
                   >Products</nuxt-link
                 >
               </li>
@@ -45,14 +31,7 @@
                   to="/orders"
                   aria-label="Our product"
                   title="Our product"
-                  class="
-                    font-medium
-                    tracking-wide
-                    text-gray-100
-                    transition-colors
-                    duration-200
-                    hover:text-teal-accent-400
-                  "
+                  class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
                   >Orders</nuxt-link
                 >
               </li>
@@ -61,14 +40,7 @@
                   to="/about-us"
                   aria-label="About us"
                   title="About us"
-                  class="
-                    font-medium
-                    tracking-wide
-                    text-gray-100
-                    transition-colors
-                    duration-200
-                    hover:text-teal-accent-400
-                  "
+                  class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
                   >About us</nuxt-link
                 >
               </li>
@@ -80,23 +52,7 @@
             </li>
             <li @click="onLogout">
               <nuxt-link
-                class="
-                  inline-flex
-                  items-center
-                  justify-center
-                  h-12
-                  px-6
-                  font-medium
-                  tracking-wide
-                  text-white
-                  transition
-                  duration-200
-                  rounded-b
-                  shadow-md
-                  bg-deep-purple-accent-400
-                  hover:bg-deep-purple-accent-700
-                  focus:shadow-outline focus:outline-none
-                "
+                class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded-b shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
                 to="/"
                 >Sign out</nuxt-link
               >
@@ -106,14 +62,7 @@
             <button
               aria-label="Open Menu"
               title="Open Menu"
-              class="
-                p-2
-                mr-1
-                transition
-                duration-200
-                rounded
-                focus:outline-none focus:shadow-outline
-              "
+              class="p-2 mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline"
               @click="isMenuOpen = true"
             >
               <svg class="w-5 text-white" viewBox="0 0 24 24">
@@ -142,13 +91,7 @@
                       class="inline-flex items-center"
                     >
                       <span
-                        class="
-                          text-xl
-                          font-bold
-                          tracking-wide
-                          text-indigo-600
-                          uppercase
-                        "
+                        class="text-xl font-bold tracking-wide text-indigo-600 uppercase "
                         >Ammar Dokan</span
                       >
                     </a>
@@ -157,18 +100,7 @@
                     <button
                       aria-label="Close Menu"
                       title="Close Menu"
-                      class="
-                        p-2
-                        -mt-2
-                        -mr-2
-                        transition
-                        duration-200
-                        rounded
-                        hover:bg-gray-200
-                        focus:bg-gray-200
-                        focus:outline-none
-                        focus:shadow-outline
-                      "
+                      class="p-2 -mt-2 -mr-2 transition duration-200 rounded hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                       @click="isMenuOpen = false"
                     >
                       <svg class="w-5 text-gray-600" viewBox="0 0 24 24">
@@ -182,51 +114,33 @@
                 </div>
                 <nav>
                   <ul class="space-y-4">
-                    <li>
+                    <li @click="isMenuOpen = false">
                        <nuxt-link
                         to="/products"
                         aria-label="Our product"
                         title="Our product"
-                        class="
-                          font-medium
-                          tracking-wide
-                          text-gray-700
-                          transition-colors
-                          duration-200
-                          hover:text-deep-purple-accent-400
-                        "
+                        class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                        
                         >Product
                         </nuxt-link>
                     </li>
-                    <li>
+                    <li @click="isMenuOpen = false">
                       <nuxt-link
                         to="/orders"
                         aria-label="Our product"
                         title="Our product"
-                        class="
-                          font-medium
-                          tracking-wide
-                          text-gray-700
-                          transition-colors
-                          duration-200
-                          hover:text-deep-purple-accent-400
-                        "
+                        class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                        
                         >Orders
                       </nuxt-link>
                     </li>
-                    <li>
+                    <li @click="isMenuOpen = false">
                       <nuxt-link
                         to="/about-us"
                         aria-label="About us"
                         title="About us"
-                        class="
-                          font-medium
-                          tracking-wide
-                          text-gray-700
-                          transition-colors
-                          duration-200
-                          hover:text-deep-purple-accent-400
-                        "
+                        class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                        
                         >About us
                         </nuxt-link>
                     </li>
@@ -235,38 +149,15 @@
                         to="/"
                         aria-label="log out"
                         title="log out"
-                        class="
-                          font-medium
-                          tracking-wide
-                          text-gray-700
-                          transition-colors
-                          duration-200
-                          hover:text-deep-purple-accent-400
-                        "
+                        class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                        @click="isMenuOpen = false"
                         >sign out
                       </nuxt-link>
                     </li>
                     <li>
                       <a
                         href="/"
-                        class="
-                          inline-flex
-                          items-center
-                          justify-center
-                          w-full
-                          h-12
-                          px-6
-                          font-medium
-                          tracking-wide
-                          text-white
-                          transition
-                          duration-200
-                          rounded
-                          shadow-md
-                          bg-deep-purple-accent-400
-                          hover:bg-deep-purple-accent-700
-                          focus:shadow-outline focus:outline-none invisible
-                        "
+                        class="inline-flex items-center justify-center invisible w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
                         aria-label="Sign up"
                         title="Sign up"
                       >
@@ -295,6 +186,7 @@ export default {
   methods: {
     onLogout() {
       this.$store.dispatch("LOGOUT");
+      this.isMenuOpen = false
     },
   },
 };
