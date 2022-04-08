@@ -4,13 +4,7 @@
       <div class="flex flex-wrap mx-auto lg:w-4/5">
         <img
           alt="ecommerce"
-          class="
-            object-cover object-center
-            w-full
-            h-64
-            rounded
-            lg:w-1/2 lg:h-auto
-          "
+          class="object-cover object-center w-full h-64 rounded lg:w-1/2 lg:h-auto"
           src="https://dummyimage.com/400x400"
         >
         <div class="w-full mt-6 lg:w-1/2 lg:pl-10 lg:py-6 lg:mt-0">
@@ -145,34 +139,17 @@
             pour-over, neutra jean shorts keytar banjo tattooed umami cardigan.
           </p>
           <div
-            class="
-              flex
-              items-center
-              justify-between
-              pb-5
-              mt-6
-              mb-5
-              border-b-2 border-gray-100
-            "
+            class="flex items-center justify-between pb-5 mt-6 mb-5 border-b-2 border-gray-100 "
           >
             <div>Rate: ৳{{ product.price }}</div>
             <div class="flex items-center">
               <span class="mr-3">Quantity</span>
 
               <input
-                v-model="order.quantity"
+                v-model="quantity"
                 size="2"
                 width="40px"
-                class="
-                  py-2
-                  text-base
-                  border border-gray-300
-                  rounded
-                  focus:outline-none
-                  focus:ring-2
-                  focus:ring-indigo-200
-                  focus:border-indigo-500
-                "
+                class="py-2 text-base border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500"
                 type="number"
               >
             </div>
@@ -181,38 +158,15 @@
             <span class="text-2xl font-medium text-gray-900 title-font">Total:
             </span>
 
-            <span class="text-2xl font-medium text-gray-900 title-font">৳{{ product.price * order.quantity }}</span>
+            <span class="text-2xl font-medium text-gray-900 title-font">৳{{ product.price * quantity }}</span>
             <button
-              class="
-                flex
-                px-6
-                py-2
-                ml-auto
-                text-white
-                bg-indigo-500
-                border-0
-                rounded
-                focus:outline-none
-                hover:bg-indigo-600
-              "
+              class="flex px-6 py-2 ml-auto text-white bg-indigo-500 border-0 rounded focus:outline-none hover:bg-indigo-600"
               @click="createOrder"
             >
               Order Now!
             </button>
             <button
-              class="
-                inline-flex
-                items-center
-                justify-center
-                w-10
-                h-10
-                p-0
-                ml-4
-                text-gray-500
-                bg-gray-200
-                border-0
-                rounded-full
-              "
+              class="inline-flex items-center justify-center w-10 h-10 p-0 ml-4 text-gray-500 bg-gray-200 border-0 rounded-full "
             >
               <svg
                 fill="currentColor"
@@ -254,25 +208,19 @@ export default {
   },
   data () {
     return {
-      order: {
-        productId: '',
-        quantity: 1
-      }
+        quantity: 1,
     }
   },
   methods: {
     async createOrder () {
-      this.order.productId = this.product._id
-      const formData = new FormData()
-      Object.keys(this.order).forEach((key) => {
-        formData.append(key, this.order[key])
-      })
-      console.log(this.order)
       try {
         const res = await this.$axios({
           method: 'post',
           url: '/orders',
-          data: formData,
+          data: {
+            productId: this.product._id,
+            quantity: this.quantity
+          },
           headers: {
             Authorization: `Bearer ${this.$store.state.currentToken}`
           }

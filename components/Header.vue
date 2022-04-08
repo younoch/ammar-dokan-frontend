@@ -151,7 +151,7 @@
                         title="log out"
                         class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                         @click="isMenuOpen = false"
-                        >sign out
+                        >Sign out
                       </nuxt-link>
                     </li>
                     <li>
