@@ -1,9 +1,9 @@
 <template>
   <div x-data="{show:false}">
     <span
-      @click="showModal = true"
-      class="font-semibold text-indigo-500 hover:text-indigo-700"
+      class="font-bold text-sm text-indigo-500 hover:text-indigo-700"
       type="button"
+      @click="showModal = true"
     >
       Signup Now !
     </span>
@@ -39,21 +39,26 @@
         "
       >
         <div class="mb-8 text-center">
-          <h1 class="my-3 text-4xl font-bold">Sign up</h1>
-          <p class="text-sm text-coolGray-600">It's quick and easy.</p>
+          <h1 class="my-3 text-4xl font-bold">
+            Sign up
+          </h1>
+          <p class="text-sm text-coolGray-600">
+            It's quick and easy.
+          </p>
         </div>
         <client-only>
           <form @submit.prevent="submitSignup">
             <div class="space-y-1">
               <div>
-                <label for="email" class="block mb-2 text-sm"
-                  >Email address</label
-                >
+                <label
+                  for="email"
+                  class="block mb-2 text-sm"
+                >Email address</label>
                 <input
+                  v-model="signup.email"
                   type="email"
                   name="email"
                   placeholder="email"
-                  v-model="signup.email"
                   class="
                     w-full
                     px-3
@@ -65,25 +70,25 @@
                     focus:outline-none focus:ring-1 focus:ring-blue-300
                   "
                   @input="setEmail($event.target.value)"
-                />
+                >
               </div>
               <div class="min-h-[16px] text-sm text-left text-red-500">
                 <p v-if="!$v.signup.email.required && errorEmail">
-                  <span class="text-xl mdi mdi-information-outline"></span>
+                  <span class="text-xl mdi mdi-information-outline" />
                   Field is required.
                 </p>
                 <p v-if="!$v.signup.email.email">
-                  <span class="text-xl mdi mdi-information-outline"></span>
+                  <span class="text-xl mdi mdi-information-outline" />
                   Please insert email in correct format
                 </p>
               </div>
 
               <div>
                 <input
+                  v-model="signup.password"
                   type="password"
                   name="password"
                   placeholder="password"
-                  v-model="signup.password"
                   class="
                     w-full
                     px-3
@@ -95,16 +100,16 @@
                     focus:outline-none focus:ring-1 focus:ring-blue-300
                   "
                   @input="setPassword($event.target.value)"
-                />
+                >
               </div>
               <div class="text-red-500 text-sm text-left">
                 <p v-if="!$v.signup.password.required && errorPassword">
-                  <span class="text-base mdi mdi-information-outline"></span>
+                  <span class="text-base mdi mdi-information-outline" />
                   Password is required.
                 </p>
                 <p v-if="!$v.signup.password.minLength">
-                  <span class="text-base mdi mdi-information-outline"></span>
-                  Password must have at least 3 letters.
+                  <span class="text-base mdi mdi-information-outline" />
+                  Password must have at least 5 letters.
                 </p>
               </div>
             </div>
@@ -118,7 +123,6 @@
                   Sign up
                 </button>
                 <button
-                  @click="showModal = false"
                   type="button"
                   class="
                     w-full
@@ -128,18 +132,21 @@
                     border border-blue-600
                     rounded-md
                   "
+                  @click="showModal = false"
                 >
                   Cancel
                 </button>
               </div>
               <p class="px-6 text-sm text-center text-coolGray-600">
                 I agree to abide by templatana's
-                <a href="#" class="text-blue-600 hover:underline"
-                  >Terms of Service</a
-                >. and it's
-                <a href="#" class="text-blue-600 hover:underline"
-                  >Privacy Policy</a
-                >.
+                <a
+                  href="#"
+                  class="text-blue-600 hover:underline"
+                >Terms of Service</a>. and it's
+                <a
+                  href="#"
+                  class="text-blue-600 hover:underline"
+                >Privacy Policy</a>.
               </p>
             </div>
           </form>
@@ -150,60 +157,60 @@
 </template>
 
 <script>
-import { required, email, minLength } from "vuelidate/lib/validators";
+import { required, email, minLength } from 'vuelidate/lib/validators'
 export default {
-  data() {
+  data () {
     return {
       errorEmail: false,
       errorPassword: false,
       showModal: false,
       signup: {
-        email: "",
-        password: "",
-      },
-    };
+        email: '',
+        password: ''
+      }
+    }
   },
   validations: {
     signup: {
       email: {
         required,
-        email,
+        email
       },
       password: {
         required,
-        minLength: minLength(3),
-      },
-    },
+        minLength: minLength(5)
+      }
+    }
   },
   methods: {
-    async submitSignup() {
-      this.$v.$touch();
+    async submitSignup () {
+      this.$v.$touch()
       if (!this.$v.$invalid) {
         try {
-          let res = await this.$axios({
-            method: "post",
-            url: "/user/signup",
-            data: this.signup,
-          });
-          let data = res.data;
-          alert(data.message);
-          return data;
+          const res = await this.$axios({
+            method: 'post',
+            url: '/user/signup',
+            data: this.signup
+          })
+          const data = res.data
+          alert(data.message)
+          return data
         } catch (error) {
-          alert(error.response.data.message);
-          return error.response;
+          alert(error.response.data.message)
+          return error.response
         }
       }
     },
-    setEmail(value) {
-      this.errorEmail = true;
-      this.signup.email = value;
-      this.$v.signup.email.$touch();
+    setEmail (value) {
+      this.errorEmail = true
+      this.signup.email = value
+      this.$v.signup.email.$touch()
     },
-    setPassword(value) {
-      this.errorPassword = true;
-      this.signup.password = value;
-      this.$v.signup.password.$touch();
-    },
-  },
-};
+    setPassword (value) {
+      this.errorPassword = true
+      this.signup.password = value
+      this.$v.signup.password.$touch()
+    }
+  }
+}
 </script>
