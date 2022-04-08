@@ -1,7 +1,16 @@
 <template>
   <div class="flex items-center justify-center">
     <div
-      class="flex justify-center flex-1 max-w-screen-xl m-0 bg-white shadow sm:rounded-lg"
+      class="
+        flex
+        justify-center
+        flex-1
+        max-w-screen-xl
+        m-0
+        bg-white
+        shadow
+        sm:rounded-lg
+      "
     >
       <div class="p-4 lg:w-1/2 xl:w-5/12 sm:p-8">
         <div class="flex flex-col items-center mt-3 lg:mt-8">
@@ -64,58 +73,132 @@
             </div> -->
 
             <form @submit.prevent="submitLogin" class="max-w-xs mx-auto">
-              <label class="mb-2 text-gray-600 Lg:text-lg" for="email"
-                >Email / Username</label
+              <div
+                class="form-group"
+                :class="{ 'form-group--error': $v.login.email.$error }"
               >
-              <input
-                id="email"
-                class="w-full px-6 py-3 text-sm font-medium placeholder-gray-500 bg-gray-100 border border-gray-200 rounded-lg lg:px-8 lg:py-4 focus:outline-none focus:border-gray-400 focus:bg-white"
-                type="email"
-                placeholder="Email"
-                v-model.trim="login.email"
-                @blur="$v.login.email.$touch()"
-              />
-              <!-- <template v-if="$v.login.email.$error"> -->
-              <!-- <p v-if="!$v.login.email.required" class="text-red-500">
-                  Email is Required!
-                </p> -->
-              <!--                 <p
-                  v-else-if="!$v.login.email.email"
-                  class="text-red-500"
+                <label
+                  class="mb-2 text-gray-600 Lg:text-lg form__label"
+                  for="email"
+                  >Email / Username
+                </label>
+                <input
+                  id="email"
+                  class="
+                    w-full
+                    px-6
+                    py-3
+                    text-sm
+                    font-medium
+                    placeholder-gray-500
+                    bg-gray-100
+                    border border-gray-200
+                    rounded-lg
+                    lg:px-8 lg:py-4
+                    focus:outline-none focus:border-gray-400 focus:bg-white
+                    form__input
+                  "
+                  type="email"
+                  placeholder="Email"
+                  v-model.trim="login.email"
+                  @input="setEmail($event.target.value)"
+                />
+              </div>
+              <div class=" text-sm text-red-500">
+                <p
+                  v-if="!$v.login.email.required && errorEmail"
                 >
-                  Email is Invalid!
-                </p> -->
-              <!-- </template> -->
+                  <span class="text-base mdi mdi-information-outline"></span>
+                  Field is required.
+                </p>
+                <p v-if="!$v.login.email.email">
+                  <span class="text-base mdi mdi-information-outline"></span>
+                  Please insert email in correct format
+                </p>
+              </div>
+
               <div class="mt-4 lg:mt-5">
                 <label class="mb-2 text-gray-600 lg:text-lg" for="email"
                   >Password</label
                 >
                 <input
-                  class="w-full px-6 py-3 text-sm font-medium placeholder-gray-500 bg-gray-100 border border-gray-200 rounded-lg lg:px-8 lg:py-4 focus:outline-none focus:border-gray-400 focus:bg-white"
+                  class="
+                    w-full
+                    px-6
+                    py-3
+                    text-sm
+                    font-medium
+                    placeholder-gray-500
+                    bg-gray-100
+                    border border-gray-200
+                    rounded-lg
+                    lg:px-8 lg:py-4
+                    focus:outline-none focus:border-gray-400 focus:bg-white
+                  "
                   type="password"
                   placeholder="Password"
                   v-model="login.password"
+                  @input="setPassword($event.target.value)"
                 />
               </div>
 
-              <!--               <div class="flex justify-between mb-2">
+              <div
+                class="text-red-500"
+                v-if="!$v.login.password.required && errorPassword"
+              >
+                <span class="text-xl mdi mdi-information-outline"></span>
+                Password is required.
+              </div>
+              <div class="text-red-500" v-if="!$v.login.password.minLength">
+                <span class="text-xl mdi mdi-information-outline"></span>
+                Password must have at least 3 letters.
+              </div>
+
+              <!--<div class="flex justify-between mb-2">
                 <a
                   href="#"
                   class="text-xs text-blue-600 test-right hover:underline"
-                  >Forgot password?</a
-                >
+                  >Forgot password?
+                  </a>
               </div> -->
               <button
                 type="submit"
-                class="flex items-center justify-center w-full py-2 mt-5 font-semibold tracking-wide text-gray-100 transition-all duration-300 ease-in-out bg-indigo-500 rounded-lg lg:py-3 hover:bg-indigo-700 focus:shadow-outline focus:outline-none disabled:text-indigo-200"
+                class="
+                  flex
+                  items-center
+                  justify-center
+                  w-full
+                  py-2
+                  mt-5
+                  font-semibold
+                  tracking-wide
+                  text-gray-100
+                  transition-all
+                  duration-300
+                  ease-in-out
+                  bg-indigo-500 
+                  disabled:bg-indigo-200
+                  rounded-lg
+                  lg:py-3
+                  hover:bg-indigo-700
+                  focus:shadow-outline focus:outline-none
+                "
+                :disabled="$v.$invalid"
               >
                 <span class="text-xl mdi mdi-login-variant"></span>
                 <span class="ml-2"> Sign In </span>
               </button>
-              <p class="mt-2 text-center text-gray-600 lg:mt-6 lg:text-lg">
-                Don't have an account yet? click
-              </p>
-              <!-- <SignUp /> -->
+              <div
+                class="
+                  mt-2
+                  text-center text-gray-600
+                  lg:mt-10 lg:text-lg
+                  inline
+                "
+              >
+                <span class="inline">Don't have an account yet?</span>
+                <SignUp class="inline cursor-pointer" />
+              </div>
             </form>
           </div>
         </div>
@@ -138,6 +221,8 @@ export default {
   name: "signin",
   data() {
     return {
+      errorEmail: false,
+      errorPassword: false,
       login: {
         email: "",
         password: "",
@@ -156,7 +241,7 @@ export default {
       },
       password: {
         required,
-        minLength: minLength(8),
+        minLength: minLength(3),
       },
     },
   },
@@ -164,9 +249,6 @@ export default {
     async submitLogin() {
       this.$v.$touch();
       if (!this.$v.$invalid) {
-        retrun;
-      }
-      else if (this.email !== "") {
         try {
           let res = await this.$axios({
             method: "post",
@@ -177,12 +259,25 @@ export default {
           this.$store.commit("CURRENT_TOKEN", data.token);
           this.$store.dispatch("SET_LOGOUT_TIMER", 5 * 60 * 1000);
           this.$router.push("/products");
+          this.errorEmail = this.errorPassword = false;
           return data;
         } catch (error) {
           alert(error.response.data.message);
           return error.response;
         }
+      } else {
+        alert("Fill all field in correct way");
       }
+    },
+    setEmail(value) {
+      this.errorEmail = true;
+      this.login.email = value;
+      this.$v.login.email.$touch();
+    },
+    setPassword(value) {
+      this.errorPassword = true;
+      this.login.password = value;
+      this.$v.login.password.$touch();
     },
   },
 };

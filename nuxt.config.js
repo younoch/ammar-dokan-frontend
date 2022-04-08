@@ -24,7 +24,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '~plugins/vuelidate', ssr: false }
+    '~/plugins/vuelidate.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -66,9 +66,9 @@ export default {
         "postcss-custom-properties": false
       },
     },
-    vendor: [
+/*     vendor: [
       'vuelidate'
-    ]
+    ] */
   },
   // server: {
   //   port: process.env.PORT ||8000, // default: 3000

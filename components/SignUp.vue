@@ -1,34 +1,12 @@
 <template>
   <div x-data="{show:false}">
-    <div class="flex items-center justify-center mt-3 lg:mt-4">
-      <button
-        @click="showModal = true"
-        class="
-        flex items-center justify-center
-          w-full p-2 lg:p-3
-          font-semibold
-          text-blue-100
-          bg-indigo-500
-          rounded-lg
-          hover:bg-indigo-700
-        "
-        type="button"
-      >
-        <svg
-          class="w-6 h-6 mr-2"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
-          <circle cx="8.5" cy="7" r="4" />
-          <path d="M20 8v6M23 11h-6" />
-        </svg>
-        Signup Now !
-      </button>
-    </div>
+    <span
+      @click="showModal = true"
+      class="font-semibold text-indigo-500 hover:text-indigo-700"
+      type="button"
+    >
+      Signup Now !
+    </span>
     <div
       v-if="showModal"
       x-transition:enter="transition ease-out duration-300"
@@ -55,7 +33,7 @@
           m-8
           bg-white
           rounded-md
-          lg:m-0 lg:w-1/4
+          lg:m-0 lg:w-1/3
           sm:p-10
           md:min-w-[330px]
         "
@@ -66,7 +44,7 @@
         </div>
         <client-only>
           <form @submit.prevent="submitSignup">
-            <div class="space-y-4">
+            <div class="space-y-1">
               <div>
                 <label for="email" class="block mb-2 text-sm"
                   >Email address</label
@@ -86,8 +64,20 @@
                     bg-blue-50
                     focus:outline-none focus:ring-1 focus:ring-blue-300
                   "
+                  @input="setEmail($event.target.value)"
                 />
               </div>
+              <div class="min-h-[16px] text-sm text-left text-red-500">
+                <p v-if="!$v.signup.email.required && errorEmail">
+                  <span class="text-xl mdi mdi-information-outline"></span>
+                  Field is required.
+                </p>
+                <p v-if="!$v.signup.email.email">
+                  <span class="text-xl mdi mdi-information-outline"></span>
+                  Please insert email in correct format
+                </p>
+              </div>
+
               <div>
                 <input
                   type="password"
@@ -104,14 +94,26 @@
                     bg-blue-50
                     focus:outline-none focus:ring-1 focus:ring-blue-300
                   "
+                  @input="setPassword($event.target.value)"
                 />
+              </div>
+              <div class="text-red-500 text-sm text-left">
+                <p v-if="!$v.signup.password.required && errorPassword">
+                  <span class="text-base mdi mdi-information-outline"></span>
+                  Password is required.
+                </p>
+                <p v-if="!$v.signup.password.minLength">
+                  <span class="text-base mdi mdi-information-outline"></span>
+                  Password must have at least 3 letters.
+                </p>
               </div>
             </div>
             <div class="mt-6 space-y-2">
               <div class="flex gap-x-2">
                 <button
                   type="submit"
-                  class="w-full px-8 py-3 text-blue-100 bg-blue-600 rounded-md"
+                  class="w-full px-8 py-3 text-blue-100 bg-blue-600 rounded-md disabled:bg-blue-200"
+                  :disabled="$v.$invalid"
                 >
                   Sign up
                 </button>
@@ -148,9 +150,12 @@
 </template>
 
 <script>
+import { required, email, minLength } from "vuelidate/lib/validators";
 export default {
   data() {
     return {
+      errorEmail: false,
+      errorPassword: false,
       showModal: false,
       signup: {
         email: "",
@@ -158,21 +163,46 @@ export default {
       },
     };
   },
+  validations: {
+    signup: {
+      email: {
+        required,
+        email,
+      },
+      password: {
+        required,
+        minLength: minLength(3),
+      },
+    },
+  },
   methods: {
     async submitSignup() {
-      try {
-        let res = await this.$axios({
-          method: "post",
-          url: "/user/signup",
-          data: this.signup,
-        });
-        let data = res.data;
-        alert(data.message);
-        return data;
-      } catch (error) {
-        alert(error.response.data.message);
-        return error.response;
+      this.$v.$touch();
+      if (!this.$v.$invalid) {
+        try {
+          let res = await this.$axios({
+            method: "post",
+            url: "/user/signup",
+            data: this.signup,
+          });
+          let data = res.data;
+          alert(data.message);
+          return data;
+        } catch (error) {
+          alert(error.response.data.message);
+          return error.response;
+        }
       }
+    },
+    setEmail(value) {
+      this.errorEmail = true;
+      this.signup.email = value;
+      this.$v.signup.email.$touch();
+    },
+    setPassword(value) {
+      this.errorPassword = true;
+      this.signup.password = value;
+      this.$v.signup.password.$touch();
     },
   },
 };
