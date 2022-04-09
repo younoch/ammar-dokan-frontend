@@ -113,13 +113,13 @@
                   </div>
                 </div>
                 <nav>
-                  <ul class="space-y-4">
+                  <ul>
                     <li @click="isMenuOpen = false">
                        <nuxt-link
                         to="/products"
                         aria-label="Our product"
                         title="Our product"
-                        class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                        class="manu-item"
                         
                         >Product
                         </nuxt-link>
@@ -129,7 +129,7 @@
                         to="/orders"
                         aria-label="Our product"
                         title="Our product"
-                        class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                        class="manu-item"
                         
                         >Orders
                       </nuxt-link>
@@ -139,7 +139,7 @@
                         to="/about-us"
                         aria-label="About us"
                         title="About us"
-                        class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                        class="manu-item"
                         
                         >About us
                         </nuxt-link>
@@ -149,7 +149,7 @@
                         to="/"
                         aria-label="log out"
                         title="log out"
-                        class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                        class="manu-item"
                         @click="isMenuOpen = false"
                         >Sign out
                       </nuxt-link>
@@ -193,6 +193,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.manu-item {
+  @apply font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-white hover:bg-indigo-800 block p-2 rounded-lg;
+}
 .logo {
   @apply inline-block;
   & img {
