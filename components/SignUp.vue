@@ -1,7 +1,7 @@
 <template>
   <div x-data="{show:false}">
     <span
-      class="font-bold text-sm text-indigo-500 hover:text-indigo-700"
+      class="text-sm font-bold text-indigo-500 hover:text-indigo-700"
       type="button"
       @click="showModal = true"
     >
@@ -15,14 +15,7 @@
       x-transition:leave="transition ease-in duration-300"
       x-transition:leave-start="opacity-100 scale-100"
       x-transition:leave-end="opacity-0 scale-90"
-      class="
-        absolute
-        inset-0
-        flex
-        items-center
-        justify-center
-        bg-gray-700 bg-opacity-50
-      "
+      class="absolute inset-0 flex items-center justify-center bg-gray-700 bg-opacity-50 "
     >
       <div
         @click.="showModal = false"
@@ -59,16 +52,7 @@
                   type="email"
                   name="email"
                   placeholder="email"
-                  class="
-                    w-full
-                    px-3
-                    py-2
-                    text-blue-800
-                    border border-blue-300
-                    rounded-md
-                    bg-blue-50
-                    focus:outline-none focus:ring-1 focus:ring-blue-300
-                  "
+                  class="w-full px-3 py-2 text-blue-800 border border-blue-300 rounded-md  bg-blue-50 focus:outline-none focus:ring-1 focus:ring-blue-300"
                   @input="setEmail($event.target.value)"
                 >
               </div>
@@ -89,20 +73,11 @@
                   type="password"
                   name="password"
                   placeholder="password"
-                  class="
-                    w-full
-                    px-3
-                    py-2
-                    text-blue-800
-                    border border-blue-300
-                    rounded-md
-                    bg-blue-50
-                    focus:outline-none focus:ring-1 focus:ring-blue-300
-                  "
+                  class="w-full px-3 py-2 text-blue-800 border border-blue-300 rounded-md  bg-blue-50 focus:outline-none focus:ring-1 focus:ring-blue-300"
                   @input="setPassword($event.target.value)"
                 >
               </div>
-              <div class="text-red-500 text-sm text-left">
+              <div class="text-sm text-left text-red-500">
                 <p v-if="!$v.signup.password.required && errorPassword">
                   <span class="text-base mdi mdi-information-outline" />
                   Password is required.
@@ -124,14 +99,7 @@
                 </button>
                 <button
                   type="button"
-                  class="
-                    w-full
-                    px-8
-                    py-3
-                    text-blue-600
-                    border border-blue-600
-                    rounded-md
-                  "
+                  class="w-full px-8 py-3 text-blue-600 border border-blue-600 rounded-md "
                   @click="showModal = false"
                 >
                   Cancel
@@ -193,6 +161,7 @@ export default {
             data: this.signup
           })
           const data = res.data
+          this.showModal = false
           alert(data.message)
           return data
         } catch (error) {
