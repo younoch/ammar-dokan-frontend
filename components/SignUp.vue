@@ -52,7 +52,7 @@
                   type="email"
                   name="email"
                   placeholder="email"
-                  class="w-full px-3 py-2 text-blue-800 border border-blue-300 rounded-md  bg-blue-50 focus:outline-none focus:ring-1 focus:ring-blue-300"
+                  class="w-full px-3 py-2 text-blue-800 border border-blue-300 rounded-md bg-blue-50 focus:outline-none focus:ring-1 focus:ring-blue-300"
                   @input="setEmail($event.target.value)"
                 >
               </div>
@@ -73,7 +73,7 @@
                   type="password"
                   name="password"
                   placeholder="password"
-                  class="w-full px-3 py-2 text-blue-800 border border-blue-300 rounded-md  bg-blue-50 focus:outline-none focus:ring-1 focus:ring-blue-300"
+                  class="w-full px-3 py-2 text-blue-800 border border-blue-300 rounded-md bg-blue-50 focus:outline-none focus:ring-1 focus:ring-blue-300"
                   @input="setPassword($event.target.value)"
                 >
               </div>
